@@ -13,21 +13,20 @@ function Home() {
         <div className="home-content">
           <div className="home-left">
             <div className="profile-card">
-              <div className="profile-header">Ranjan Notes</div>
-              <div style={{ padding: '20px', backgroundColor: '#f5f5f5' }}>
-  {/* Replace the placeholder div with: */}
-  <img 
-    src="/profile.jpg" 
-    alt="Profile" 
-    style={{ 
-      width: '100%', 
-      height: 'auto', 
-      display: 'block',
-      borderRadius: '10px'
-    }}
-  />
+  <div className="profile-header">Ranjan Notes</div>
+  <div style={{ padding: '20px', backgroundColor: '#f5f5f5' }}>
+    <img 
+      src={`${import.meta.env.BASE_URL}profile.jpg`}
+      alt="Profile" 
+      style={{ 
+        width: '100%', 
+        height: 'auto', 
+        display: 'block',
+        borderRadius: '10px'
+      }}
+    />
+  </div>
 </div>
-            </div>
           </div>
 
           <div className="home-right">

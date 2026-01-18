@@ -13,7 +13,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/quiz-assessment-app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/username/:quizType" element={<UserName />} />
