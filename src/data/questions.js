@@ -53,6 +53,149 @@ export const learningAgilityQuestions = [
   "How often do you use insights gained from self-reflection to make positive changes?"
 ];
 
+export const brainDominanceQuestions = [
+  {
+    question: "When solving a problem, you prefer to:",
+    options: [
+      "Break it into smaller logical steps",
+      "Look at the big picture and use intuition",
+    ],
+  },
+  {
+    question: "When studying or working, you prefer:",
+    options: [
+      "A quiet, organized environment",
+      "Background music or some level of activity around you",
+    ],
+  },
+  {
+    question: "You are better at remembering:",
+    options: [
+      "Names and dates",
+      "Faces and places",
+    ],
+  },
+  {
+    question: "When reading, you prefer:",
+    options: [
+      "Non-fiction, factual content",
+      "Fiction, stories with vivid imagery",
+    ],
+  },
+  {
+    question: "When given directions, you prefer:",
+    options: [
+      "Written step-by-step instructions",
+      "A visual map or diagram",
+    ],
+  },
+  {
+    question: "When making decisions, you tend to:",
+    options: [
+      "Use logic and analysis",
+      "Trust your gut feeling",
+    ],
+  },
+  {
+    question: "In a group project, you usually:",
+    options: [
+      "Plan the timeline and assign tasks",
+      "Come up with creative ideas and brainstorm",
+    ],
+  },
+  {
+    question: "You find it easier to:",
+    options: [
+      "Work with numbers and data",
+      "Work with colors and design",
+    ],
+  },
+  {
+    question: "Your desk or workspace is usually:",
+    options: [
+      "Neat and organized",
+      "Creative and a bit messy",
+    ],
+  },
+  {
+    question: "When explaining something to someone, you prefer to:",
+    options: [
+      "Use words and detailed explanations",
+      "Draw diagrams or use gestures",
+    ],
+  },
+  {
+    question: "When you have free time, you are more likely to:",
+    options: [
+      "Read a book or solve puzzles",
+      "Draw, paint, or listen to music",
+    ],
+  },
+  {
+    question: "You prefer activities that involve:",
+    options: [
+      "Rules, structure, and clear guidelines",
+      "Freedom, creativity, and self-expression",
+    ],
+  },
+  {
+    question: "When learning something new, you prefer:",
+    options: [
+      "Detailed written instructions or lectures",
+      "Hands-on demonstrations or visual examples",
+    ],
+  },
+  {
+    question: "You tend to think in:",
+    options: [
+      "Words and sequences",
+      "Images and patterns",
+    ],
+  },
+  {
+    question: "In conversations, you focus more on:",
+    options: [
+      "The specific words and facts being shared",
+      "The tone, emotion, and body language",
+    ],
+  },
+  {
+    question: "When planning a trip, you prefer to:",
+    options: [
+      "Create a detailed itinerary with schedules",
+      "Be spontaneous and explore as you go",
+    ],
+  },
+  {
+    question: "Your strongest skill area is:",
+    options: [
+      "Mathematics, science, or language",
+      "Art, music, or creative writing",
+    ],
+  },
+  {
+    question: "You express yourself better through:",
+    options: [
+      "Speaking or writing clearly",
+      "Art, music, or physical movement",
+    ],
+  },
+  {
+    question: "When you are stressed, you usually:",
+    options: [
+      "Make a to-do list and prioritize tasks",
+      "Go for a walk, listen to music, or do something creative",
+    ],
+  },
+  {
+    question: "Your approach to time is:",
+    options: [
+      "Punctual and schedule-driven",
+      "Flexible and go-with-the-flow",
+    ],
+  },
+];
+
 export const varkQuestions = [
   {
     question: "I lean towards ___ for getting the latest news/information",

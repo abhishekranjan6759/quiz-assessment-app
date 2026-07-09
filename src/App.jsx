@@ -8,6 +8,8 @@ import LearningAgilityQuiz from './pages/LearningAgilityQuiz';
 import LearningAgilityResults from './pages/LearningAgilityResults';
 import VARKQuiz from './pages/VARKQuiz';
 import VARKResults from './pages/VARKResults';
+import BrainDominanceQuiz from './pages/BrainDominanceQuiz';
+import BrainDominanceResults from './pages/BrainDominanceResults';
 import About from './pages/About';
 import './App.css';
 
@@ -23,6 +25,8 @@ function App() {
         <Route path="/results/learning-agility" element={<LearningAgilityResults />} />
         <Route path="/quiz/vark" element={<VARKQuiz />} />
         <Route path="/results/vark" element={<VARKResults />} />
+        <Route path="/quiz/brain-dominance" element={<BrainDominanceQuiz />} />
+        <Route path="/results/brain-dominance" element={<BrainDominanceResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

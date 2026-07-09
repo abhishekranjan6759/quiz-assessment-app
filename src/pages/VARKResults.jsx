@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import ResultChart from '../components/ResultChart';
+import Celebration from '../components/Celebration';
 import { categorizeVARK } from '../utils/categories';
 
 function VARKResults() {
@@ -60,6 +61,7 @@ function VARKResults() {
   return (
     <div className="app-container">
       <div className="results-container">
+        <Celebration />
         <h1 className="results-title">Congratulations</h1>
         <div className="results-divider"></div>
         <ResultChart 
@@ -82,7 +84,7 @@ function VARKResults() {
             }
           }}
         >
-          <DialogTitle id="alert-dialog-title" style={{ color: '#1565C0', fontWeight: 600 }}>
+          <DialogTitle id="alert-dialog-title" style={{ color: '#0B2A5B', fontWeight: 600 }}>
             Return to Home Page?
           </DialogTitle>
           <DialogContent>
@@ -98,8 +100,8 @@ function VARKResults() {
               onClick={handleCancelReturn} 
               variant="outlined"
               style={{ 
-                borderColor: '#1565C0', 
-                color: '#1565C0',
+                borderColor: '#0B2A5B', 
+                color: '#0B2A5B',
                 borderRadius: '20px',
                 padding: '8px 24px',
                 fontWeight: 600
@@ -112,7 +114,7 @@ function VARKResults() {
               variant="contained"
               autoFocus
               style={{ 
-                backgroundColor: '#1565C0',
+                backgroundColor: '#0B2A5B',
                 borderRadius: '20px',
                 padding: '8px 24px',
                 fontWeight: 600

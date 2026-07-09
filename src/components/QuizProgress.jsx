@@ -17,9 +17,9 @@ function QuizProgress({ current, total }) {
           left: 0,
           right: 0,
           height: 3,
-          backgroundColor: 'rgba(76, 175, 80, 0.2)',
+          backgroundColor: 'rgba(52, 168, 83, 0.2)',
           '& .MuiLinearProgress-bar': {
-            backgroundColor: '#4CAF50'
+            backgroundColor: '#34A853'
           }
         }}
       />
