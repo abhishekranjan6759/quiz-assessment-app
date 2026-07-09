@@ -100,3 +100,40 @@ export const categorizeVARK = (answer) => {
   
   return null;
 };
+
+// Motivation Type categorization
+// First option (index 0) = Intrinsic, Second option (index 1) = Extrinsic
+export const categorizeMotivation = (answers) => {
+  let intrinsic = 0;
+  let extrinsic = 0;
+
+  answers.forEach((answer) => {
+    if (answer === 0) {
+      intrinsic++;
+    } else if (answer === 1) {
+      extrinsic++;
+    }
+  });
+
+  return { intrinsic, extrinsic };
+};
+
+// Happiness scoring
+export const scoreHappiness = (answers) => {
+  const scoreMapping = {
+    'Strongly Disagree': 1,
+    'Disagree': 2,
+    'Neutral': 3,
+    'Agree': 4,
+    'Strongly Agree': 5,
+  };
+
+  const totalScore = answers.reduce(
+    (total, answer) => total + (scoreMapping[answer] || 0),
+    0
+  );
+  const maxScore = answers.length * 5;
+  const percentage = (totalScore / maxScore) * 100;
+
+  return { totalScore, maxScore, percentage };
+};

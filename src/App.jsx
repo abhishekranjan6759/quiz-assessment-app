@@ -10,6 +10,10 @@ import VARKQuiz from './pages/VARKQuiz';
 import VARKResults from './pages/VARKResults';
 import BrainDominanceQuiz from './pages/BrainDominanceQuiz';
 import BrainDominanceResults from './pages/BrainDominanceResults';
+import MotivationQuiz from './pages/MotivationQuiz';
+import MotivationResults from './pages/MotivationResults';
+import HappinessQuiz from './pages/HappinessQuiz';
+import HappinessResults from './pages/HappinessResults';
 import About from './pages/About';
 import './App.css';
 
@@ -27,6 +31,10 @@ function App() {
         <Route path="/results/vark" element={<VARKResults />} />
         <Route path="/quiz/brain-dominance" element={<BrainDominanceQuiz />} />
         <Route path="/results/brain-dominance" element={<BrainDominanceResults />} />
+        <Route path="/quiz/motivation" element={<MotivationQuiz />} />
+        <Route path="/results/motivation" element={<MotivationResults />} />
+        <Route path="/quiz/happiness" element={<HappinessQuiz />} />
+        <Route path="/results/happiness" element={<HappinessResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

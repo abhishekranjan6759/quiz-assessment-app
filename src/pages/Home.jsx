@@ -31,7 +31,7 @@ function Home() {
           </div>
 
           <div className="home-right">
-            <h1 className="quiz-title">Quiz Link</h1>
+            <h1 className="quiz-title">Know Yourself Better</h1>
             <div className="quiz-buttons">
               <button 
                 className="quiz-button"
@@ -56,6 +56,18 @@ function Home() {
                 onClick={() => navigate('/username/brain-dominance')}
               >
                 Brain Dominance (Left/Right Brain)
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/motivation')}
+              >
+                Motivation Type (Intrinsic/Extrinsic)
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/happiness')}
+              >
+                Happiness & Well-being Check
               </button>
               <button 
                 className="quiz-button"

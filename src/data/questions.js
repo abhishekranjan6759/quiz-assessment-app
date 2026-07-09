@@ -333,3 +333,138 @@ export const varkQuestions = [
     ],
   },
 ];
+
+// Motivation Type Quiz - Intrinsic vs Extrinsic
+// Each question has options scored: first option = Intrinsic, second option = Extrinsic
+export const motivationQuestions = [
+  {
+    question: "Why do you study or learn new things?",
+    options: [
+      "Because I genuinely enjoy gaining knowledge and understanding",
+      "Because it helps me get good grades or a better job",
+    ],
+  },
+  {
+    question: "When you complete a challenging task, what feels most rewarding?",
+    options: [
+      "The personal satisfaction of overcoming the challenge",
+      "The praise or recognition I receive from others",
+    ],
+  },
+  {
+    question: "What motivates you to work hard on a project?",
+    options: [
+      "My curiosity and interest in the topic",
+      "The reward or outcome I'll get at the end",
+    ],
+  },
+  {
+    question: "When choosing a course or subject, you prefer:",
+    options: [
+      "Something that fascinates me, even if it's difficult",
+      "Something that will look good on my resume",
+    ],
+  },
+  {
+    question: "How do you feel about homework or assignments?",
+    options: [
+      "I enjoy them when they help me explore ideas deeper",
+      "I do them mainly because they count towards my grade",
+    ],
+  },
+  {
+    question: "When you read a book, it's usually because:",
+    options: [
+      "I'm genuinely curious about the subject or story",
+      "It was recommended or required for a purpose",
+    ],
+  },
+  {
+    question: "What keeps you going when a task gets difficult?",
+    options: [
+      "The desire to master the skill and grow personally",
+      "The thought of the reward or avoiding negative consequences",
+    ],
+  },
+  {
+    question: "When you achieve something, what matters most to you?",
+    options: [
+      "Knowing that I've improved and grown as a person",
+      "Getting a certificate, trophy, or public acknowledgment",
+    ],
+  },
+  {
+    question: "You volunteer or participate in extra activities because:",
+    options: [
+      "It brings me joy and fulfillment",
+      "It enhances my profile and gives me an advantage",
+    ],
+  },
+  {
+    question: "What type of feedback motivates you most?",
+    options: [
+      "Understanding where I can improve and how to grow",
+      "Being told I'm the best or ranked highly",
+    ],
+  },
+  {
+    question: "When you set goals for yourself, they are usually about:",
+    options: [
+      "Personal growth, skills, or becoming better at something",
+      "Earning rewards, promotions, or external achievements",
+    ],
+  },
+  {
+    question: "If no one would ever know about your accomplishments, would you still pursue them?",
+    options: [
+      "Yes, because the journey and growth matter to me",
+      "Probably not as much — recognition motivates me",
+    ],
+  },
+  {
+    question: "When working in a team, you feel most motivated when:",
+    options: [
+      "I can contribute meaningfully and learn from others",
+      "My contribution is noticed and appreciated publicly",
+    ],
+  },
+  {
+    question: "How do you feel about competitions?",
+    options: [
+      "I enjoy them for the challenge, regardless of winning",
+      "I enjoy them mainly when I have a chance to win",
+    ],
+  },
+  {
+    question: "Your ideal job would be one that:",
+    options: [
+      "Aligns with my passion, even if the pay is average",
+      "Pays well and has great perks, even if it's not my passion",
+    ],
+  },
+];
+
+// Happiness & Well-being Quiz (Oxford Happiness Questionnaire inspired)
+// Likert scale: Strongly Disagree (1) to Strongly Agree (5)
+export const happinessQuestions = [
+  "I feel that life is very rewarding",
+  "I feel energetic and enthusiastic most of the time",
+  "I am satisfied with the way my life is going",
+  "I feel I have a great deal of energy",
+  "I find it easy to make decisions",
+  "I feel fully mentally alert",
+  "I often experience joy and happiness",
+  "I feel I am in control of my life",
+  "I feel optimistic about the future",
+  "I find beauty in many things around me",
+  "I have a sense of purpose and meaning in my life",
+  "I am able to handle stress effectively",
+  "I feel connected to the people around me",
+  "I laugh and smile often",
+  "I wake up feeling refreshed and ready for the day",
+  "I feel confident about my abilities",
+  "I enjoy my daily activities",
+  "I feel grateful for what I have in life",
+  "I feel calm and peaceful most of the time",
+  "I believe I can achieve my goals",
+];

@@ -10,7 +10,9 @@ function UserName() {
     'learning-agility': 'Learning Agility Quiz',
     'social-type': 'Social Type Quiz',
     'vark': 'VARK Learning Style Quiz',
-    'brain-dominance': 'Brain Dominance Quiz'
+    'brain-dominance': 'Brain Dominance Quiz',
+    'motivation': 'Motivation Type Quiz',
+    'happiness': 'Happiness & Well-being Quiz'
   };
 
   const handleSubmit = (e) => {
@@ -20,7 +22,9 @@ function UserName() {
         'learning-agility': '/quiz/learning-agility',
         'social-type': '/quiz/social-type',
         'vark': '/quiz/vark',
-        'brain-dominance': '/quiz/brain-dominance'
+        'brain-dominance': '/quiz/brain-dominance',
+        'motivation': '/quiz/motivation',
+        'happiness': '/quiz/happiness'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }
