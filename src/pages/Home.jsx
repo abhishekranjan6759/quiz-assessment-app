@@ -71,6 +71,18 @@ function Home() {
               </button>
               <button 
                 className="quiz-button"
+                onClick={() => navigate('/username/iq')}
+              >
+                IQ Assessment
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/eq')}
+              >
+                EQ (Emotional Intelligence)
+              </button>
+              <button 
+                className="quiz-button"
                 onClick={() => navigate('/about')}
               >
                 About

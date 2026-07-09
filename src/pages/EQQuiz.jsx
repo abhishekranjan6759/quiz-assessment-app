@@ -1,0 +1,85 @@
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import QuizProgress from '../components/QuizProgress';
+import { eqQuestions } from '../data/questions';
+
+function EQQuiz() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const userName = location.state?.userName || '';
+
+  const handleAnswerChange = (optionIndex) => {
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = optionIndex;
+    setAnswers(newAnswers);
+  };
+
+  const handleNext = () => {
+    if (currentQuestion < eqQuestions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      navigate('/results/eq', { state: { answers, userName } });
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  return (
+    <div className="app-container">
+      <div className="quiz-container">
+        <QuizProgress current={currentQuestion} total={eqQuestions.length} />
+        <div className="quiz-body">
+          <div className="question-section">
+            <h3 className="question-text">
+              {eqQuestions[currentQuestion].question}
+            </h3>
+            <ul className="options-list">
+              {eqQuestions[currentQuestion].options.map((option, index) => (
+                <li
+                  key={index}
+                  className="option-item"
+                  onClick={() => handleAnswerChange(index)}
+                >
+                  <input
+                    type="radio"
+                    name={`question-${currentQuestion}`}
+                    value={index}
+                    checked={answers[currentQuestion] === index}
+                    onChange={() => handleAnswerChange(index)}
+                  />
+                  <span className="option-text">
+                    {String.fromCharCode(65 + index)}. {option}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="quiz-navigation">
+              <button
+                className="nav-button"
+                onClick={handleBack}
+                disabled={currentQuestion === 0}
+              >
+                Back
+              </button>
+              <button
+                className="nav-button"
+                onClick={handleNext}
+                disabled={answers[currentQuestion] === undefined}
+              >
+                {currentQuestion === eqQuestions.length - 1 ? 'Submit' : 'Next'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default EQQuiz;

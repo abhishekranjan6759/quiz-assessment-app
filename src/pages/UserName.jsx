@@ -12,7 +12,9 @@ function UserName() {
     'vark': 'VARK Learning Style Quiz',
     'brain-dominance': 'Brain Dominance Quiz',
     'motivation': 'Motivation Type Quiz',
-    'happiness': 'Happiness & Well-being Quiz'
+    'happiness': 'Happiness & Well-being Quiz',
+    'iq': 'IQ Assessment',
+    'eq': 'EQ (Emotional Intelligence) Assessment'
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +26,9 @@ function UserName() {
         'vark': '/quiz/vark',
         'brain-dominance': '/quiz/brain-dominance',
         'motivation': '/quiz/motivation',
-        'happiness': '/quiz/happiness'
+        'happiness': '/quiz/happiness',
+        'iq': '/quiz/iq',
+        'eq': '/quiz/eq'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }

@@ -14,6 +14,10 @@ import MotivationQuiz from './pages/MotivationQuiz';
 import MotivationResults from './pages/MotivationResults';
 import HappinessQuiz from './pages/HappinessQuiz';
 import HappinessResults from './pages/HappinessResults';
+import IQQuiz from './pages/IQQuiz';
+import IQResults from './pages/IQResults';
+import EQQuiz from './pages/EQQuiz';
+import EQResults from './pages/EQResults';
 import About from './pages/About';
 import './App.css';
 
@@ -35,6 +39,10 @@ function App() {
         <Route path="/results/motivation" element={<MotivationResults />} />
         <Route path="/quiz/happiness" element={<HappinessQuiz />} />
         <Route path="/results/happiness" element={<HappinessResults />} />
+        <Route path="/quiz/iq" element={<IQQuiz />} />
+        <Route path="/results/iq" element={<IQResults />} />
+        <Route path="/quiz/eq" element={<EQQuiz />} />
+        <Route path="/results/eq" element={<EQResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

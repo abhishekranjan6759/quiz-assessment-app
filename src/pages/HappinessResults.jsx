@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
-import ResultChart from '../components/ResultChart';
 import Celebration from '../components/Celebration';
 import { scoreHappiness } from '../utils/categories';
 
@@ -12,24 +11,6 @@ function HappinessResults() {
   const [openDialog, setOpenDialog] = useState(false);
 
   const { totalScore, maxScore, percentage } = scoreHappiness(answers);
-
-  let highHappiness = 0;
-  let moderateHappiness = 0;
-  let lowHappiness = 0;
-
-  if (percentage >= 75) {
-    highHappiness = 100;
-  } else if (percentage >= 50) {
-    moderateHappiness = 100;
-  } else {
-    lowHappiness = 100;
-  }
-
-  const data = [
-    { name: 'High Well-being', value: highHappiness, percentage: highHappiness },
-    { name: 'Moderate Well-being', value: moderateHappiness, percentage: moderateHappiness },
-    { name: 'Needs Attention', value: lowHappiness, percentage: lowHappiness },
-  ].filter(item => item.percentage > 0);
 
   const getHappinessText = () => {
     if (percentage >= 75) {
@@ -45,6 +26,12 @@ function HappinessResults() {
     if (percentage >= 75) return "High Well-being";
     if (percentage >= 50) return "Moderate Well-being";
     return "Needs Attention";
+  };
+
+  const getColor = () => {
+    if (percentage >= 75) return "#34A853";
+    if (percentage >= 50) return "#FF6B00";
+    return "#E53935";
   };
 
   const handleReturnHome = () => {
@@ -66,33 +53,84 @@ function HappinessResults() {
         <Celebration />
         <h1 className="results-title">Your Results</h1>
         <div className="results-divider"></div>
-        <ResultChart
-          data={data}
-          userName={userName}
-          quizType="happiness"
-          onReturnHome={handleReturnHome}
-        />
+
         <div style={{
           maxWidth: '900px',
+          width: '100%',
           background: 'white',
-          padding: '30px',
+          padding: '40px 30px',
           borderRadius: '20px',
-          marginTop: '20px',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)'
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
+          textAlign: 'center'
         }}>
-          <h3 style={{ color: '#0B2A5B', marginBottom: '15px' }}>
-            Your Well-being Score: {totalScore} out of {maxScore} ({percentage.toFixed(1)}%) — {getLabel()}
+          {/* Score Circle */}
+          <div style={{ position: 'relative', width: '200px', height: '200px', margin: '0 auto 30px' }}>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="85" fill="none" stroke="#e0e0e0" strokeWidth="12" />
+              <circle
+                cx="100" cy="100" r="85"
+                fill="none"
+                stroke={getColor()}
+                strokeWidth="12"
+                strokeLinecap="round"
+                strokeDasharray={`${(percentage / 100) * 534} 534`}
+                transform="rotate(-90 100 100)"
+              />
+            </svg>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '42px', fontWeight: 800, color: getColor(), fontFamily: 'Montserrat' }}>
+                {percentage.toFixed(0)}%
+              </div>
+              <div style={{ fontSize: '13px', color: '#666', fontWeight: 500 }}>Well-being</div>
+            </div>
+          </div>
+
+          {/* Score Details */}
+          <h3 style={{ color: '#0B2A5B', marginBottom: '8px', fontFamily: 'Montserrat', fontSize: '22px' }}>
+            {getLabel()}
           </h3>
-          <p style={{ color: '#333', fontSize: '16px', lineHeight: '1.8' }}>
+          <p style={{ color: '#666', fontSize: '16px', marginBottom: '24px' }}>
+            Score: {totalScore} out of {maxScore}
+          </p>
+
+          {/* Score Bar */}
+          <div style={{
+            width: '100%',
+            maxWidth: '400px',
+            height: '12px',
+            background: '#e0e0e0',
+            borderRadius: '6px',
+            margin: '0 auto 30px',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              width: `${percentage}%`,
+              height: '100%',
+              background: getColor(),
+              borderRadius: '6px',
+              transition: 'width 1s ease'
+            }} />
+          </div>
+
+          {/* Description */}
+          <p style={{ color: '#333', fontSize: '15px', lineHeight: '1.8', textAlign: 'left', maxWidth: '700px', margin: '0 auto' }}>
             {getHappinessText()}
           </p>
+
           {percentage < 50 && (
             <div style={{
               marginTop: '20px',
               padding: '15px 20px',
               background: '#FFF3E0',
               borderRadius: '12px',
-              borderLeft: '4px solid #FF6B00'
+              borderLeft: '4px solid #FF6B00',
+              textAlign: 'left'
             }}>
               <p style={{ color: '#333', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
                 <strong>Remember:</strong> This is not a clinical assessment. If you're feeling overwhelmed,
@@ -100,6 +138,13 @@ function HappinessResults() {
               </p>
             </div>
           )}
+        </div>
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '24px', padding: '0 12px' }}>
+          <button className="download-button" onClick={handleReturnHome}>
+            Return to Home
+          </button>
         </div>
 
         <Dialog
@@ -114,8 +159,6 @@ function HappinessResults() {
           <DialogContent>
             <p style={{ color: '#333', fontSize: '16px', lineHeight: '1.6' }}>
               Are you sure you want to go to the main page?
-              <br /><br />
-              <strong>Warning:</strong> If you leave this page, you will not be able to re-download your results.
             </p>
           </DialogContent>
           <DialogActions style={{ padding: '20px' }}>

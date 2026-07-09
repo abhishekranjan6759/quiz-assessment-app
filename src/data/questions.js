@@ -468,3 +468,372 @@ export const happinessQuestions = [
   "I feel calm and peaceful most of the time",
   "I believe I can achieve my goals",
 ];
+
+
+// IQ Quiz - Logical Reasoning, Pattern Recognition, Numerical & Verbal
+// Each question has options with one correct answer (correctIndex)
+export const iqQuestions = [
+  // Numerical Reasoning
+  {
+    question: "What comes next in the sequence: 2, 6, 12, 20, 30, ?",
+    options: ["40", "42", "38", "44"],
+    correctIndex: 1,
+    category: "numerical",
+  },
+  {
+    question: "If 3 × 4 = 21, 5 × 6 = 55, then 7 × 8 = ?",
+    options: ["91", "72", "85", "96"],
+    correctIndex: 0,
+    category: "numerical",
+  },
+  {
+    question: "What is the next number: 1, 1, 2, 3, 5, 8, 13, ?",
+    options: ["18", "20", "21", "26"],
+    correctIndex: 2,
+    category: "numerical",
+  },
+  {
+    question: "Complete the series: 3, 9, 27, 81, ?",
+    options: ["162", "243", "189", "216"],
+    correctIndex: 1,
+    category: "numerical",
+  },
+  {
+    question: "If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?",
+    options: ["100 minutes", "5 minutes", "20 minutes", "50 minutes"],
+    correctIndex: 1,
+    category: "numerical",
+  },
+  // Logical Reasoning
+  {
+    question: "All roses are flowers. Some flowers fade quickly. Which conclusion is valid?",
+    options: [
+      "All roses fade quickly",
+      "Some roses may fade quickly",
+      "No roses fade quickly",
+      "All flowers are roses"
+    ],
+    correctIndex: 1,
+    category: "logical",
+  },
+  {
+    question: "If A > B, B > C, and C > D, which statement must be true?",
+    options: ["D > A", "A > D", "B > D only sometimes", "A = D"],
+    correctIndex: 1,
+    category: "logical",
+  },
+  {
+    question: "Tom is taller than Jim. Jim is taller than Sam. Sam is taller than Bob. Who is the shortest?",
+    options: ["Tom", "Jim", "Sam", "Bob"],
+    correctIndex: 3,
+    category: "logical",
+  },
+  {
+    question: "If all Zips are Zaps, and all Zaps are Zops, then:",
+    options: [
+      "All Zops are Zips",
+      "All Zips are Zops",
+      "Some Zops are not Zaps",
+      "No Zips are Zops"
+    ],
+    correctIndex: 1,
+    category: "logical",
+  },
+  {
+    question: "A clock shows 3:15. What is the angle between the hour and minute hands?",
+    options: ["0°", "7.5°", "15°", "22.5°"],
+    correctIndex: 1,
+    category: "logical",
+  },
+  // Pattern Recognition
+  {
+    question: "Which number doesn't belong: 2, 3, 5, 7, 11, 14, 17?",
+    options: ["2", "11", "14", "17"],
+    correctIndex: 2,
+    category: "pattern",
+  },
+  {
+    question: "Complete the pattern: AZ, BY, CX, DW, ?",
+    options: ["EV", "EU", "FV", "EX"],
+    correctIndex: 0,
+    category: "pattern",
+  },
+  {
+    question: "Which doesn't belong: Triangle, Square, Pentagon, Circle, Hexagon?",
+    options: ["Triangle", "Square", "Circle", "Hexagon"],
+    correctIndex: 2,
+    category: "pattern",
+  },
+  {
+    question: "If APPLE = 50, BANANA = 42, then CHERRY = ?",
+    options: ["64", "72", "63", "54"],
+    correctIndex: 2,
+    category: "pattern",
+  },
+  {
+    question: "What comes next: J, F, M, A, M, J, J, ?",
+    options: ["A", "S", "O", "K"],
+    correctIndex: 0,
+    category: "pattern",
+  },
+  // Verbal Reasoning
+  {
+    question: "Which word is the odd one out: Apple, Banana, Carrot, Mango, Grape?",
+    options: ["Apple", "Banana", "Carrot", "Grape"],
+    correctIndex: 2,
+    category: "verbal",
+  },
+  {
+    question: "BOOK is to READING as FORK is to:",
+    options: ["Drawing", "Eating", "Writing", "Cooking"],
+    correctIndex: 1,
+    category: "verbal",
+  },
+  {
+    question: "What is the opposite of 'EPHEMERAL'?",
+    options: ["Temporary", "Permanent", "Beautiful", "Ancient"],
+    correctIndex: 1,
+    category: "verbal",
+  },
+  {
+    question: "Find the analogy: Doctor : Patient :: Teacher : ?",
+    options: ["School", "Book", "Student", "Class"],
+    correctIndex: 2,
+    category: "verbal",
+  },
+  {
+    question: "Which word means the same as 'UBIQUITOUS'?",
+    options: ["Rare", "Everywhere", "Unique", "Dangerous"],
+    correctIndex: 1,
+    category: "verbal",
+  },
+];
+
+// EQ (Emotional Intelligence) Quiz - Based on Goleman's 5 domains
+// Each question is situational with 4 options scored 1-4 (best answer = 4)
+export const eqQuestions = [
+  // Self-Awareness (Q1-5)
+  {
+    question: "You receive critical feedback on a project you worked hard on. Your first reaction is:",
+    options: [
+      "Feel hurt and dismiss the feedback as unfair",
+      "Get angry at the person giving feedback",
+      "Take a moment to process, then objectively evaluate the feedback",
+      "Immediately agree with everything to avoid conflict",
+    ],
+    scores: [2, 1, 4, 2],
+    domain: "Self-Awareness",
+  },
+  {
+    question: "During a stressful exam week, you notice you're snapping at friends. You:",
+    options: [
+      "Continue as usual — exams are stressful for everyone",
+      "Recognize your stress is affecting others and apologize",
+      "Blame your friends for being too sensitive",
+      "Isolate yourself completely until exams are over",
+    ],
+    scores: [1, 4, 1, 2],
+    domain: "Self-Awareness",
+  },
+  {
+    question: "When you feel anxious before a presentation, you:",
+    options: [
+      "Pretend you're not nervous and push through",
+      "Acknowledge the anxiety and use breathing techniques to manage it",
+      "Avoid the presentation entirely",
+      "Tell everyone how nervous you are repeatedly",
+    ],
+    scores: [2, 4, 1, 2],
+    domain: "Self-Awareness",
+  },
+  {
+    question: "You made a mistake at work/school that no one noticed. You:",
+    options: [
+      "Keep quiet and hope no one finds out",
+      "Blame it on someone else if it's ever discovered",
+      "Acknowledge the error, correct it, and learn from it",
+      "Obsess over it for days feeling guilty",
+    ],
+    scores: [2, 1, 4, 2],
+    domain: "Self-Awareness",
+  },
+  {
+    question: "How well can you identify what specific emotion you're feeling at any given moment?",
+    options: [
+      "I rarely think about my emotions",
+      "I can usually tell if I'm happy or sad, but not much more",
+      "I can identify specific emotions and understand what triggered them",
+      "I'm overwhelmed by emotions and can't pinpoint them",
+    ],
+    scores: [1, 2, 4, 1],
+    domain: "Self-Awareness",
+  },
+  // Self-Regulation (Q6-10)
+  {
+    question: "Someone cuts in front of you in a long queue. You:",
+    options: [
+      "Yell at them immediately",
+      "Feel frustrated but calmly point out the queue",
+      "Say nothing but feel angry for hours",
+      "Physically push them back",
+    ],
+    scores: [1, 4, 2, 1],
+    domain: "Self-Regulation",
+  },
+  {
+    question: "You're in a heated argument and you realize you might be wrong. You:",
+    options: [
+      "Keep arguing to win the point anyway",
+      "Change the subject to avoid admitting it",
+      "Pause, acknowledge the valid points, and adjust your position",
+      "Storm off without resolving anything",
+    ],
+    scores: [1, 2, 4, 1],
+    domain: "Self-Regulation",
+  },
+  {
+    question: "When faced with an unexpected change in plans, you typically:",
+    options: [
+      "Get extremely frustrated and resist the change",
+      "Feel initially upset but adapt within a reasonable time",
+      "Don't care at all about any changes",
+      "Panic and become unable to function",
+    ],
+    scores: [1, 4, 2, 1],
+    domain: "Self-Regulation",
+  },
+  {
+    question: "You have an important deadline tomorrow but friends invite you to a party tonight. You:",
+    options: [
+      "Go to the party and pull an all-nighter later",
+      "Decline, finish your work, then reward yourself afterwards",
+      "Go to the party and skip the deadline",
+      "Get angry at your friends for tempting you",
+    ],
+    scores: [2, 4, 1, 1],
+    domain: "Self-Regulation",
+  },
+  {
+    question: "When you feel overwhelmed by negative emotions, you:",
+    options: [
+      "Use unhealthy coping mechanisms (overeating, excessive screen time)",
+      "Suppress the emotions entirely and pretend they don't exist",
+      "Use healthy strategies like exercise, journaling, or talking to someone",
+      "Take out frustrations on others around you",
+    ],
+    scores: [1, 2, 4, 1],
+    domain: "Self-Regulation",
+  },
+  // Empathy (Q11-15)
+  {
+    question: "Your friend seems quieter than usual but says 'I'm fine.' You:",
+    options: [
+      "Accept it and move on — they said they're fine",
+      "Push them aggressively to tell you what's wrong",
+      "Gently let them know you're there if they want to talk, without pressure",
+      "Talk about your own problems to relate",
+    ],
+    scores: [2, 1, 4, 1],
+    domain: "Empathy",
+  },
+  {
+    question: "A classmate/colleague is struggling with a task you find easy. You:",
+    options: [
+      "Think they should just try harder",
+      "Offer patient help without making them feel inferior",
+      "Do it for them to save time",
+      "Point out how easy it is for you",
+    ],
+    scores: [1, 4, 2, 1],
+    domain: "Empathy",
+  },
+  {
+    question: "You see someone being treated unfairly in a group setting. You:",
+    options: [
+      "Stay quiet — it's not your business",
+      "Join in with the group to fit in",
+      "Speak up respectfully or support the person privately",
+      "Make a scene and publicly shame the group",
+    ],
+    scores: [2, 1, 4, 2],
+    domain: "Empathy",
+  },
+  {
+    question: "A team member shares an idea you think is weak. You:",
+    options: [
+      "Immediately say it won't work",
+      "Acknowledge the effort, ask questions to understand their thinking, then share concerns constructively",
+      "Ignore it and propose your own idea",
+      "Laugh at the suggestion",
+    ],
+    scores: [1, 4, 2, 1],
+    domain: "Empathy",
+  },
+  {
+    question: "When someone from a different background shares their experience, you:",
+    options: [
+      "Compare it to your own experience and explain why yours was harder",
+      "Listen actively and try to understand their perspective without judgment",
+      "Dismiss it as irrelevant to you",
+      "Pretend to listen while thinking about something else",
+    ],
+    scores: [1, 4, 1, 1],
+    domain: "Empathy",
+  },
+  // Social Skills (Q16-20)
+  {
+    question: "In a group project, two members have conflicting ideas. You:",
+    options: [
+      "Pick a side and support them",
+      "Ignore the conflict and hope it resolves itself",
+      "Facilitate a discussion to find common ground or a compromise",
+      "Take over the project yourself to avoid conflict",
+    ],
+    scores: [2, 1, 4, 2],
+    domain: "Social Skills",
+  },
+  {
+    question: "You need to deliver bad news to someone. You:",
+    options: [
+      "Send a text message to avoid the conversation",
+      "Be direct but compassionate, choosing an appropriate time and place",
+      "Sugarcoat it so much that the message gets lost",
+      "Blurt it out without considering their feelings",
+    ],
+    scores: [1, 4, 2, 1],
+    domain: "Social Skills",
+  },
+  {
+    question: "At a networking event or social gathering with strangers, you:",
+    options: [
+      "Stand in the corner checking your phone",
+      "Only talk to people you already know",
+      "Approach new people with genuine curiosity and ask thoughtful questions",
+      "Talk only about yourself to impress others",
+    ],
+    scores: [1, 2, 4, 1],
+    domain: "Social Skills",
+  },
+  {
+    question: "A friend achieves something you were also competing for. You:",
+    options: [
+      "Feel bitter and avoid them",
+      "Congratulate them genuinely while managing your own disappointment privately",
+      "Downplay their achievement",
+      "Pretend to be happy but gossip about them later",
+    ],
+    scores: [1, 4, 1, 1],
+    domain: "Social Skills",
+  },
+  {
+    question: "When giving feedback to someone, you:",
+    options: [
+      "Only point out what's wrong to help them improve",
+      "Avoid giving feedback entirely to keep the peace",
+      "Balance specific positives with constructive suggestions, being respectful of their effort",
+      "Only give positive feedback regardless of quality",
+    ],
+    scores: [2, 1, 4, 2],
+    domain: "Social Skills",
+  },
+];
