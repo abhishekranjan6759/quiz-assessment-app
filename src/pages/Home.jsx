@@ -35,57 +35,57 @@ function Home() {
             <div className="quiz-buttons">
               <button 
                 className="quiz-button"
-                onClick={() => navigate('/username/learning-agility')}
+                onClick={() => navigate('/username/spirit-animal')}
               >
-                Learning Agility
-              </button>
-              <button 
-                className="quiz-button"
-                onClick={() => navigate('/username/social-type')}
-              >
-                Social Type
-              </button>
-              <button 
-                className="quiz-button"
-                onClick={() => navigate('/username/vark')}
-              >
-                VARK Know Your Learning Style
+                🐾 Spirit Animal Personality
               </button>
               <button 
                 className="quiz-button"
                 onClick={() => navigate('/username/brain-dominance')}
               >
-                Brain Dominance (Left/Right Brain)
+                🧠 Brain Dominance (Left/Right Brain)
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/vark')}
+              >
+                📚 VARK Know Your Learning Style
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/social-type')}
+              >
+                👥 Social Type
               </button>
               <button 
                 className="quiz-button"
                 onClick={() => navigate('/username/motivation')}
               >
-                Motivation Type (Intrinsic/Extrinsic)
+                🎯 Motivation Type (Intrinsic/Extrinsic)
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/learning-agility')}
+              >
+                📈 Learning Agility
               </button>
               <button 
                 className="quiz-button"
                 onClick={() => navigate('/username/happiness')}
               >
-                Happiness & Well-being Check
-              </button>
-              <button 
-                className="quiz-button"
-                onClick={() => navigate('/username/iq')}
-              >
-                IQ Assessment
+                😊 Happiness & Well-being Check
               </button>
               <button 
                 className="quiz-button"
                 onClick={() => navigate('/username/eq')}
               >
-                EQ (Emotional Intelligence)
+                💡 EQ (Emotional Intelligence)
               </button>
               <button 
                 className="quiz-button"
-                onClick={() => navigate('/username/spirit-animal')}
+                onClick={() => navigate('/username/iq')}
               >
-                🐾 Spirit Animal Personality
+                🧩 IQ Assessment
               </button>
               <button 
                 className="quiz-button"
