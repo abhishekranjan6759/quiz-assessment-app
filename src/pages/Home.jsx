@@ -41,6 +41,12 @@ function Home() {
               </button>
               <button 
                 className="quiz-button"
+                onClick={() => navigate('/username/inner-world')}
+              >
+                🌊 Inner World (What's on Your Mind?)
+              </button>
+              <button 
+                className="quiz-button"
                 onClick={() => navigate('/username/spirit-animal')}
               >
                 🐾 Spirit Animal Personality

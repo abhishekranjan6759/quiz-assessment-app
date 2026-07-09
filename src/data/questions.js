@@ -1188,3 +1188,74 @@ export const moodProfiles = {
     forFacilitator: "This student needs energizers. Start with a short physical activity, provide a break, use highly interactive/visual content, and avoid long lectures. Consider shorter learning bursts.",
   },
 };
+
+
+// Inner World Quiz - Understanding student's mental/emotional burdens
+// Likert scale: Not at all (1), Rarely (2), Sometimes (3), Often (4), Almost Always (5)
+// Higher score = more burden in that area
+export const innerWorldQuestions = [
+  // Family & Home (Q1-4)
+  { question: "I feel tension or conflict at home that stays on my mind even when I'm studying", domain: "Family & Home" },
+  { question: "I feel pressure from my family to perform or meet expectations I struggle with", domain: "Family & Home" },
+  { question: "Problems at home make it hard for me to concentrate on anything else", domain: "Family & Home" },
+  { question: "I worry about my family's financial situation or well-being", domain: "Family & Home" },
+  // Relationships (Q5-8)
+  { question: "I feel hurt, confused, or distracted because of a personal relationship", domain: "Relationships" },
+  { question: "I feel lonely or disconnected from the people around me", domain: "Relationships" },
+  { question: "I spend a lot of mental energy thinking about relationship problems", domain: "Relationships" },
+  { question: "I feel like I can't talk to anyone about what's really bothering me", domain: "Relationships" },
+  // Self-Worth & Identity (Q9-12)
+  { question: "I compare myself to others and feel like I'm not good enough", domain: "Self-Worth" },
+  { question: "I feel like I'm pretending to be okay when I'm actually struggling inside", domain: "Self-Worth" },
+  { question: "I doubt my abilities and feel like I don't deserve success", domain: "Self-Worth" },
+  { question: "I feel stuck — like I don't know who I am or what I really want", domain: "Self-Worth" },
+  // Academic Pressure (Q13-16)
+  { question: "I feel overwhelmed by the amount of work or expectations placed on me", domain: "Academic Pressure" },
+  { question: "I fear failure so much that it stops me from trying new things", domain: "Academic Pressure" },
+  { question: "I feel like I'm falling behind and can't catch up no matter what I do", domain: "Academic Pressure" },
+  { question: "I feel anxious about exams, deadlines, or my future career", domain: "Academic Pressure" },
+  // Emotional Load (Q17-20)
+  { question: "I carry thoughts that keep me awake at night or distract me during the day", domain: "Emotional Load" },
+  { question: "I feel emotionally drained even without doing much physical work", domain: "Emotional Load" },
+  { question: "I sometimes feel like crying or breaking down without a clear reason", domain: "Emotional Load" },
+  { question: "I feel like my mind is always 'full' — there's no space for anything new", domain: "Emotional Load" },
+];
+
+// Inner World domain descriptions and recommendations
+export const innerWorldDomains = {
+  "Family & Home": {
+    emoji: "🏠",
+    color: "#6A3DE8",
+    low: "Your home environment feels stable and supportive. It's not weighing on your mind significantly.",
+    moderate: "There are some tensions at home that occasionally distract you. It may help to talk to someone you trust.",
+    high: "Family issues are heavily impacting your mental space. Consider seeking support from a counselor or mentor.",
+  },
+  "Relationships": {
+    emoji: "💔",
+    color: "#E53935",
+    low: "Your relationships feel healthy and are not causing you significant stress right now.",
+    moderate: "Some relationship challenges are on your mind. Journaling or talking to a friend might help process these feelings.",
+    high: "Relationship issues are consuming a lot of your mental energy. Reaching out to a trusted person or counselor can help.",
+  },
+  "Self-Worth": {
+    emoji: "🪞",
+    color: "#FF6B00",
+    low: "You have a generally positive sense of self. You feel confident in who you are.",
+    moderate: "You sometimes struggle with self-doubt. Remember — growth is a process, not a destination.",
+    high: "You're carrying a heavy burden of self-doubt. Please know that your worth is not defined by grades or others' opinions.",
+  },
+  "Academic Pressure": {
+    emoji: "📚",
+    color: "#1E5EFF",
+    low: "Academic demands feel manageable. You're in a good place to learn effectively.",
+    moderate: "You feel some academic pressure building up. Breaking tasks into smaller steps can help reduce overwhelm.",
+    high: "Academic stress is significantly impacting you. Consider talking to your teacher about workload, and prioritize self-care.",
+  },
+  "Emotional Load": {
+    emoji: "🧠",
+    color: "#0B2A5B",
+    low: "Your emotional state is light and manageable. You have mental space available for learning.",
+    moderate: "You're carrying some emotional weight. Mindfulness, breaks, and creative expression can help lighten the load.",
+    high: "Your emotional burden is heavy. This is not weakness — it's a signal to seek support. Talk to someone you trust.",
+  },
+};
