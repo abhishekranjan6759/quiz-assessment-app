@@ -24,6 +24,8 @@ import MoodCheckQuiz from './pages/MoodCheckQuiz';
 import MoodCheckResults from './pages/MoodCheckResults';
 import InnerWorldQuiz from './pages/InnerWorldQuiz';
 import InnerWorldResults from './pages/InnerWorldResults';
+import LimitingBeliefsQuiz from './pages/LimitingBeliefsQuiz';
+import LimitingBeliefsResults from './pages/LimitingBeliefsResults';
 import About from './pages/About';
 import './App.css';
 
@@ -55,6 +57,8 @@ function App() {
         <Route path="/results/mood-check" element={<MoodCheckResults />} />
         <Route path="/quiz/inner-world" element={<InnerWorldQuiz />} />
         <Route path="/results/inner-world" element={<InnerWorldResults />} />
+        <Route path="/quiz/limiting-beliefs" element={<LimitingBeliefsQuiz />} />
+        <Route path="/results/limiting-beliefs" element={<LimitingBeliefsResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

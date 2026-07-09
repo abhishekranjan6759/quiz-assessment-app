@@ -47,6 +47,12 @@ function Home() {
               </button>
               <button 
                 className="quiz-button"
+                onClick={() => navigate('/username/limiting-beliefs')}
+              >
+                🔓 Self-Limiting Beliefs
+              </button>
+              <button 
+                className="quiz-button"
                 onClick={() => navigate('/username/spirit-animal')}
               >
                 🐾 Spirit Animal Personality

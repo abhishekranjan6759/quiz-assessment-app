@@ -17,7 +17,8 @@ function UserName() {
     'eq': 'EQ (Emotional Intelligence) Assessment',
     'spirit-animal': 'Spirit Animal Personality Quiz',
     'mood-check': 'Mood Check',
-    'inner-world': 'Inner World Assessment'
+    'inner-world': 'Inner World Assessment',
+    'limiting-beliefs': 'Self-Limiting Beliefs Assessment'
   };
 
   const handleSubmit = (e) => {
@@ -34,7 +35,8 @@ function UserName() {
         'eq': '/quiz/eq',
         'spirit-animal': '/quiz/spirit-animal',
         'mood-check': '/quiz/mood-check',
-        'inner-world': '/quiz/inner-world'
+        'inner-world': '/quiz/inner-world',
+        'limiting-beliefs': '/quiz/limiting-beliefs'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }
