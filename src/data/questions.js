@@ -1100,6 +1100,16 @@ export const moodCheckQuestions = [
   },
   {
     question: "What's your energy level right now (1 being lowest)?",
+    type: "scale",
+    scaleMapping: [
+      { range: [1, 2], mood: "Tired" },
+      { range: [3, 4], mood: "Tired" },
+      { range: [5, 5], mood: "Frightened" },
+      { range: [6, 6], mood: "Relaxed" },
+      { range: [7, 7], mood: "Calm" },
+      { range: [8, 8], mood: "Composed" },
+      { range: [9, 10], mood: "Composed" },
+    ],
     options: [
       { text: "7/10 — Steady and balanced", mood: "Calm" },
       { text: "8/10 — High and focused", mood: "Composed" },
