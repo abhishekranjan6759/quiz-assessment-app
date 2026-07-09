@@ -83,6 +83,12 @@ function Home() {
               </button>
               <button 
                 className="quiz-button"
+                onClick={() => navigate('/username/spirit-animal')}
+              >
+                🐾 Spirit Animal Personality
+              </button>
+              <button 
+                className="quiz-button"
                 onClick={() => navigate('/about')}
               >
                 About

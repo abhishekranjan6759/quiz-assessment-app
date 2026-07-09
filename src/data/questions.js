@@ -837,3 +837,199 @@ export const eqQuestions = [
     domain: "Social Skills",
   },
 ];
+
+
+// Spirit Animal Personality Quiz
+// Each answer maps to an animal: Bear, Lion, Eagle, Owl, Dolphin, Wolf
+export const spiritAnimalQuestions = [
+  {
+    question: "How do you handle conflict?",
+    options: [
+      { text: "Stay calm and use my strength only when necessary", animal: "Bear" },
+      { text: "Take charge and confront it head-on with confidence", animal: "Lion" },
+      { text: "Rise above it and look at the bigger picture", animal: "Eagle" },
+      { text: "Analyze the situation carefully before responding", animal: "Owl" },
+      { text: "Use humor and charm to defuse the tension", animal: "Dolphin" },
+      { text: "Rely on my close circle for support and strategy", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "What's your ideal weekend?",
+    options: [
+      { text: "A quiet day in nature, enjoying solitude", animal: "Bear" },
+      { text: "Leading a group activity or organizing an event", animal: "Lion" },
+      { text: "Exploring somewhere new with a great view", animal: "Eagle" },
+      { text: "Reading, researching, or learning something new", animal: "Owl" },
+      { text: "Socializing with friends, playing games, having fun", animal: "Dolphin" },
+      { text: "Spending quality time with a small, close group", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "What do people admire most about you?",
+    options: [
+      { text: "My patience and inner strength", animal: "Bear" },
+      { text: "My courage and leadership", animal: "Lion" },
+      { text: "My vision and independence", animal: "Eagle" },
+      { text: "My wisdom and thoughtfulness", animal: "Owl" },
+      { text: "My energy and positive spirit", animal: "Dolphin" },
+      { text: "My loyalty and teamwork", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "When making decisions, you rely on:",
+    options: [
+      { text: "Gut instinct backed by experience", animal: "Bear" },
+      { text: "Confidence and quick judgment", animal: "Lion" },
+      { text: "A clear long-term vision", animal: "Eagle" },
+      { text: "Data, logic, and careful analysis", animal: "Owl" },
+      { text: "How it will affect relationships and people", animal: "Dolphin" },
+      { text: "Input from trusted people I respect", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "In a team project, you naturally:",
+    options: [
+      { text: "Work independently and deliver reliably", animal: "Bear" },
+      { text: "Take the lead and motivate others", animal: "Lion" },
+      { text: "Set the vision and strategy", animal: "Eagle" },
+      { text: "Plan the details and ensure quality", animal: "Owl" },
+      { text: "Keep morale high and communicate well", animal: "Dolphin" },
+      { text: "Ensure everyone works together harmoniously", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "What environment makes you feel most alive?",
+    options: [
+      { text: "Forests, mountains — somewhere grounded and peaceful", animal: "Bear" },
+      { text: "Center stage — where I can lead and inspire", animal: "Lion" },
+      { text: "High places with wide open views", animal: "Eagle" },
+      { text: "A quiet library or study space", animal: "Owl" },
+      { text: "Near water — the ocean, a pool, a lake", animal: "Dolphin" },
+      { text: "Outdoors with my close friends or family", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "Your biggest fear is:",
+    options: [
+      { text: "Being forced to act before I'm ready", animal: "Bear" },
+      { text: "Being seen as weak or irrelevant", animal: "Lion" },
+      { text: "Being restricted or losing my freedom", animal: "Eagle" },
+      { text: "Making a decision without enough information", animal: "Owl" },
+      { text: "Being alone or disconnected from others", animal: "Dolphin" },
+      { text: "Betrayal or abandonment by people I trust", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "How do you recharge your energy?",
+    options: [
+      { text: "Sleeping well, eating comfort food, resting alone", animal: "Bear" },
+      { text: "Exercising, competing, or achieving something", animal: "Lion" },
+      { text: "Traveling or experiencing something new", animal: "Eagle" },
+      { text: "Quiet reflection, meditation, or deep thinking", animal: "Owl" },
+      { text: "Laughing and playing with friends", animal: "Dolphin" },
+      { text: "Being around my inner circle of loved ones", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "Which value resonates with you the most?",
+    options: [
+      { text: "Patience and self-reliance", animal: "Bear" },
+      { text: "Courage and ambition", animal: "Lion" },
+      { text: "Freedom and perspective", animal: "Eagle" },
+      { text: "Knowledge and truth", animal: "Owl" },
+      { text: "Joy and connection", animal: "Dolphin" },
+      { text: "Loyalty and community", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "When you're stressed, you tend to:",
+    options: [
+      { text: "Withdraw and need space to process alone", animal: "Bear" },
+      { text: "Push harder and power through it", animal: "Lion" },
+      { text: "Step back to gain a broader perspective", animal: "Eagle" },
+      { text: "Overthink and analyze everything", animal: "Owl" },
+      { text: "Seek comfort from social interaction", animal: "Dolphin" },
+      { text: "Turn to my trusted people for advice", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "What's your communication style?",
+    options: [
+      { text: "Few words, but when I speak, people listen", animal: "Bear" },
+      { text: "Direct, bold, and commanding", animal: "Lion" },
+      { text: "Visionary — I paint the big picture", animal: "Eagle" },
+      { text: "Precise, thoughtful, and well-researched", animal: "Owl" },
+      { text: "Warm, expressive, and engaging", animal: "Dolphin" },
+      { text: "Honest and supportive, always checking in", animal: "Wolf" },
+    ],
+  },
+  {
+    question: "What role do you play in your friend group?",
+    options: [
+      { text: "The quiet protector who's always dependable", animal: "Bear" },
+      { text: "The leader who organizes everything", animal: "Lion" },
+      { text: "The one with big ideas and bold plans", animal: "Eagle" },
+      { text: "The advisor everyone comes to for wisdom", animal: "Owl" },
+      { text: "The entertainer who keeps things fun", animal: "Dolphin" },
+      { text: "The glue that holds the group together", animal: "Wolf" },
+    ],
+  },
+];
+
+// Spirit Animal descriptions and image URLs (Unsplash free images)
+export const spiritAnimalProfiles = {
+  Bear: {
+    name: "The Bear",
+    emoji: "🐻",
+    image: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=400&h=300&fit=crop",
+    traits: ["Patient", "Strong", "Self-reliant", "Protective", "Grounded"],
+    description: "You are The Bear — calm, powerful, and deeply self-reliant. Like the bear, you don't need to prove your strength to anyone. You are patient, thoughtful, and prefer quality solitude over superficial socializing. When you do act, you move with purpose and unstoppable force. People respect your quiet confidence and know they can depend on you.",
+    strengths: "Inner strength, patience, reliability, independence",
+    growthArea: "Opening up emotionally, being more spontaneous",
+  },
+  Lion: {
+    name: "The Lion",
+    emoji: "🦁",
+    image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400&h=300&fit=crop",
+    traits: ["Courageous", "Ambitious", "Charismatic", "Decisive", "Confident"],
+    description: "You are The Lion — bold, confident, and born to lead. You naturally command attention and inspire others with your courage and determination. You're not afraid to take risks, speak up, or stand your ground. Your ambition drives you to achieve great things, and people naturally follow your lead.",
+    strengths: "Leadership, decisiveness, courage, inspiration",
+    growthArea: "Listening to others, showing vulnerability, patience",
+  },
+  Eagle: {
+    name: "The Eagle",
+    emoji: "🦅",
+    image: "https://images.unsplash.com/photo-1611689342806-0863700ce8e4?w=400&h=300&fit=crop",
+    traits: ["Visionary", "Independent", "Focused", "Ambitious", "Free-spirited"],
+    description: "You are The Eagle — a visionary who sees what others cannot. You soar above the noise and confusion, maintaining a clear view of your goals and the bigger picture. Independence and freedom are sacred to you. You think strategically, act decisively, and never lose sight of your vision.",
+    strengths: "Vision, strategic thinking, focus, independence",
+    growthArea: "Staying grounded, connecting with others emotionally",
+  },
+  Owl: {
+    name: "The Owl",
+    emoji: "🦉",
+    image: "https://images.unsplash.com/photo-1543549790-8b5f4a028cfb?w=400&h=300&fit=crop",
+    traits: ["Wise", "Analytical", "Observant", "Thoughtful", "Intellectual"],
+    description: "You are The Owl — wise, observant, and deeply intellectual. You see through surface-level appearances and understand the deeper truth of situations. You value knowledge, precision, and careful analysis. People come to you for advice because your insights are always well-considered and accurate.",
+    strengths: "Wisdom, analysis, observation, problem-solving",
+    growthArea: "Trusting intuition, taking action without over-analyzing",
+  },
+  Dolphin: {
+    name: "The Dolphin",
+    emoji: "🐬",
+    image: "https://images.unsplash.com/photo-1607153333879-c174d265f1d2?w=400&h=300&fit=crop",
+    traits: ["Joyful", "Social", "Empathetic", "Creative", "Energetic"],
+    description: "You are The Dolphin — playful, social, and radiating positive energy. You bring joy to every room you enter and have a natural gift for connecting with people. Your empathy helps you understand others deeply, and your creativity makes you a wonderful problem-solver. Life is meant to be enjoyed, and you remind everyone of that.",
+    strengths: "Communication, empathy, creativity, positivity",
+    growthArea: "Setting boundaries, handling solitude, depth over breadth",
+  },
+  Wolf: {
+    name: "The Wolf",
+    emoji: "🐺",
+    image: "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=400&h=300&fit=crop",
+    traits: ["Loyal", "Intuitive", "Protective", "Team-oriented", "Determined"],
+    description: "You are The Wolf — fiercely loyal, deeply intuitive, and strongest when surrounded by your pack. You value trust, community, and shared purpose above all else. You'd do anything for the people you love, and your instincts rarely lead you astray. You understand that true strength comes from unity.",
+    strengths: "Loyalty, intuition, teamwork, determination",
+    growthArea: "Independence, trusting outside your circle, flexibility",
+  },
+};
