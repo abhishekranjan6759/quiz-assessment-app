@@ -9,7 +9,8 @@ function UserName() {
   const quizTitles = {
     'learning-agility': 'Learning Agility Quiz',
     'social-type': 'Social Type Quiz',
-    'vark': 'VARK Learning Style Quiz'
+    'vark': 'VARK Learning Style Quiz',
+    'brain-dominance': 'Brain Dominance Quiz'
   };
 
   const handleSubmit = (e) => {
@@ -18,7 +19,8 @@ function UserName() {
       const routes = {
         'learning-agility': '/quiz/learning-agility',
         'social-type': '/quiz/social-type',
-        'vark': '/quiz/vark'
+        'vark': '/quiz/vark',
+        'brain-dominance': '/quiz/brain-dominance'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }

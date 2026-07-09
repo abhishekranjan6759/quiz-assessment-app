@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import ResultChart from '../components/ResultChart';
+import Celebration from '../components/Celebration';
 
 function LearningAgilityResults() {
   const location = useLocation();
@@ -75,6 +76,7 @@ function LearningAgilityResults() {
   return (
     <div className="app-container">
       <div className="results-container">
+        <Celebration />
         <h1 className="results-title">Congratulations</h1>
         <div className="results-divider"></div>
         <ResultChart 
@@ -91,7 +93,7 @@ function LearningAgilityResults() {
           marginTop: '20px',
           boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)'
         }}>
-          <h3 style={{ color: '#1565C0', marginBottom: '15px' }}>
+          <h3 style={{ color: '#0B2A5B', marginBottom: '15px' }}>
             Your Score: {totalScore} out of {maxScore} ({percentage.toFixed(1)}%)
           </h3>
           <p style={{ color: '#333', fontSize: '16px', lineHeight: '1.8' }}>
@@ -117,7 +119,7 @@ function LearningAgilityResults() {
             }
           }}
         >
-          <DialogTitle id="alert-dialog-title" style={{ color: '#1565C0', fontWeight: 600 }}>
+          <DialogTitle id="alert-dialog-title" style={{ color: '#0B2A5B', fontWeight: 600 }}>
             Return to Home Page?
           </DialogTitle>
           <DialogContent>
@@ -133,8 +135,8 @@ function LearningAgilityResults() {
               onClick={handleCancelReturn} 
               variant="outlined"
               style={{ 
-                borderColor: '#1565C0', 
-                color: '#1565C0',
+                borderColor: '#0B2A5B', 
+                color: '#0B2A5B',
                 borderRadius: '20px',
                 padding: '8px 24px',
                 fontWeight: 600
@@ -147,7 +149,7 @@ function LearningAgilityResults() {
               variant="contained"
               autoFocus
               style={{ 
-                backgroundColor: '#1565C0',
+                backgroundColor: '#0B2A5B',
                 borderRadius: '20px',
                 padding: '8px 24px',
                 fontWeight: 600

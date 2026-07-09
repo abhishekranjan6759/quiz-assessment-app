@@ -13,13 +13,14 @@ function Home() {
         <div className="home-content">
           <div className="home-left">
             <div className="profile-card">
-  <div className="profile-header">Ranjan Notes</div>
-  <div style={{ padding: '20px', backgroundColor: '#f5f5f5' }}>
+  <div className="profile-header">Super Learner Academy</div>
+  <div style={{ padding: '20px', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <img 
-      src={`${import.meta.env.BASE_URL}profile.jpg`}
-      alt="Profile" 
+      src={`${import.meta.env.BASE_URL}Logo.png`}
+      alt="Super Learner Academy Logo" 
       style={{ 
         width: '100%', 
+        maxWidth: '280px',
         height: 'auto', 
         display: 'block',
         borderRadius: '10px'
@@ -49,6 +50,12 @@ function Home() {
                 onClick={() => navigate('/username/vark')}
               >
                 VARK Know Your Learning Style
+              </button>
+              <button 
+                className="quiz-button"
+                onClick={() => navigate('/username/brain-dominance')}
+              >
+                Brain Dominance (Left/Right Brain)
               </button>
               <button 
                 className="quiz-button"

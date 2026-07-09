@@ -58,6 +58,24 @@ function About() {
             <li><strong>Kinesthetic:</strong> Learn best through hands-on experience and practice</li>
           </ul>
 
+          <h2>Brain Dominance Quiz (Left/Right Brain)</h2>
+          <p>
+            The Brain Dominance quiz helps you understand whether you tend to rely more on your 
+            left hemisphere or right hemisphere when thinking and processing information. While 
+            everyone uses both sides of the brain, most people have a natural preference.
+          </p>
+          <p>
+            The two brain hemispheres are:
+          </p>
+          <ul>
+            <li><strong>Left Brain:</strong> Logical, analytical, detail-oriented, sequential thinking, language and math skills, structured planning</li>
+            <li><strong>Right Brain:</strong> Creative, intuitive, big-picture thinking, spatial awareness, artistic abilities, spontaneous and flexible</li>
+          </ul>
+          <p>
+            If your results are balanced, it means you effectively combine analytical and creative 
+            thinking styles depending on the situation.
+          </p>
+
           <h2>How to Use Your Results</h2>
           <p>
             After completing each quiz, you'll receive a detailed breakdown of your results in 

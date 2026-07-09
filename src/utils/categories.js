@@ -33,6 +33,25 @@ export const categorizeSocialType = (answer) => {
   return null;
 };
 
+// Brain Dominance categorization logic
+// First option in each question = Left Brain, Second option = Right Brain
+export const categorizeBrainDominance = (answers) => {
+  let leftBrain = 0;
+  let rightBrain = 0;
+
+  answers.forEach((answer, index) => {
+    // The questions are structured so that the first option is always Left Brain
+    // and the second option is always Right Brain
+    if (answer === 0) {
+      leftBrain++;
+    } else if (answer === 1) {
+      rightBrain++;
+    }
+  });
+
+  return { leftBrain, rightBrain };
+};
+
 // VARK categorization logic
 export const categorizeVARK = (answer) => {
   // Visual indicators
