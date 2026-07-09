@@ -20,6 +20,8 @@ import EQQuiz from './pages/EQQuiz';
 import EQResults from './pages/EQResults';
 import SpiritAnimalQuiz from './pages/SpiritAnimalQuiz';
 import SpiritAnimalResults from './pages/SpiritAnimalResults';
+import MoodCheckQuiz from './pages/MoodCheckQuiz';
+import MoodCheckResults from './pages/MoodCheckResults';
 import About from './pages/About';
 import './App.css';
 
@@ -47,6 +49,8 @@ function App() {
         <Route path="/results/eq" element={<EQResults />} />
         <Route path="/quiz/spirit-animal" element={<SpiritAnimalQuiz />} />
         <Route path="/results/spirit-animal" element={<SpiritAnimalResults />} />
+        <Route path="/quiz/mood-check" element={<MoodCheckQuiz />} />
+        <Route path="/results/mood-check" element={<MoodCheckResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

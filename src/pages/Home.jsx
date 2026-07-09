@@ -35,6 +35,12 @@ function Home() {
             <div className="quiz-buttons">
               <button 
                 className="quiz-button"
+                onClick={() => navigate('/username/mood-check')}
+              >
+                🎭 Mood Check (How Ready Are You?)
+              </button>
+              <button 
+                className="quiz-button"
                 onClick={() => navigate('/username/spirit-animal')}
               >
                 🐾 Spirit Animal Personality

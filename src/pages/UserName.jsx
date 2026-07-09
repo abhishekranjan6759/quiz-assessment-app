@@ -15,7 +15,8 @@ function UserName() {
     'happiness': 'Happiness & Well-being Quiz',
     'iq': 'IQ Assessment',
     'eq': 'EQ (Emotional Intelligence) Assessment',
-    'spirit-animal': 'Spirit Animal Personality Quiz'
+    'spirit-animal': 'Spirit Animal Personality Quiz',
+    'mood-check': 'Mood Check'
   };
 
   const handleSubmit = (e) => {
@@ -30,7 +31,8 @@ function UserName() {
         'happiness': '/quiz/happiness',
         'iq': '/quiz/iq',
         'eq': '/quiz/eq',
-        'spirit-animal': '/quiz/spirit-animal'
+        'spirit-animal': '/quiz/spirit-animal',
+        'mood-check': '/quiz/mood-check'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }

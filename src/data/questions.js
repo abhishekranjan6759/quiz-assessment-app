@@ -1033,3 +1033,148 @@ export const spiritAnimalProfiles = {
     growthArea: "Independence, trusting outside your circle, flexibility",
   },
 };
+
+
+// Mood Check Quiz - Quick emotional state assessment
+// Each answer maps to a mood: Calm, Composed, Relaxed, Frightened, Tired
+export const moodCheckQuestions = [
+  {
+    question: "Right now, how does your body feel?",
+    options: [
+      { text: "Still and peaceful — no tension at all", mood: "Calm" },
+      { text: "Alert and steady — I'm focused and ready", mood: "Composed" },
+      { text: "Loose and comfortable — like I could melt into my chair", mood: "Relaxed" },
+      { text: "Tense — my shoulders, jaw, or stomach feel tight", mood: "Frightened" },
+      { text: "Heavy — my eyes are drooping and I feel drained", mood: "Tired" },
+    ],
+  },
+  {
+    question: "If someone asked you a difficult question right now, you would:",
+    options: [
+      { text: "Think clearly and respond without stress", mood: "Calm" },
+      { text: "Feel prepared — I'd handle it confidently", mood: "Composed" },
+      { text: "Smile and take my time, no rush", mood: "Relaxed" },
+      { text: "Feel anxious and worry about giving the wrong answer", mood: "Frightened" },
+      { text: "Struggle to focus — my mind feels foggy", mood: "Tired" },
+    ],
+  },
+  {
+    question: "What best describes your breathing right now?",
+    options: [
+      { text: "Slow and natural — I'm at peace", mood: "Calm" },
+      { text: "Normal and steady — I'm in control", mood: "Composed" },
+      { text: "Deep and easy — I feel comfortable", mood: "Relaxed" },
+      { text: "Shallow or fast — I feel a bit on edge", mood: "Frightened" },
+      { text: "Slow but heavy — like sighing a lot", mood: "Tired" },
+    ],
+  },
+  {
+    question: "How would you describe your thoughts right now?",
+    options: [
+      { text: "Quiet and settled — my mind is clear", mood: "Calm" },
+      { text: "Organized and focused — I know what I'm doing", mood: "Composed" },
+      { text: "Wandering pleasantly — no pressure to think", mood: "Relaxed" },
+      { text: "Racing or worried — I can't stop overthinking", mood: "Frightened" },
+      { text: "Slow and scattered — hard to concentrate", mood: "Tired" },
+    ],
+  },
+  {
+    question: "If the session started right now with something challenging, you'd feel:",
+    options: [
+      { text: "Ready — I'm in a good headspace", mood: "Calm" },
+      { text: "Confident — bring it on, I'm prepared", mood: "Composed" },
+      { text: "Easygoing — I'll go with the flow", mood: "Relaxed" },
+      { text: "Nervous — I hope I don't mess up", mood: "Frightened" },
+      { text: "Unmotivated — I just want to rest", mood: "Tired" },
+    ],
+  },
+  {
+    question: "How did you sleep last night?",
+    options: [
+      { text: "Peacefully — I woke up feeling good", mood: "Calm" },
+      { text: "Well enough — I feel sharp and alert", mood: "Composed" },
+      { text: "Great — I feel refreshed and easy", mood: "Relaxed" },
+      { text: "Poorly — I was anxious or had bad dreams", mood: "Frightened" },
+      { text: "Not enough — I still feel exhausted", mood: "Tired" },
+    ],
+  },
+  {
+    question: "What's your energy level right now (1 being lowest)?",
+    options: [
+      { text: "7/10 — Steady and balanced", mood: "Calm" },
+      { text: "8/10 — High and focused", mood: "Composed" },
+      { text: "6/10 — Comfortable, not too high not too low", mood: "Relaxed" },
+      { text: "5/10 — Nervous energy, not the good kind", mood: "Frightened" },
+      { text: "2-3/10 — Running on empty", mood: "Tired" },
+    ],
+  },
+  {
+    question: "If you had to describe your current mood in one word:",
+    options: [
+      { text: "Peaceful", mood: "Calm" },
+      { text: "Focused", mood: "Composed" },
+      { text: "Chill", mood: "Relaxed" },
+      { text: "Anxious", mood: "Frightened" },
+      { text: "Exhausted", mood: "Tired" },
+    ],
+  },
+  {
+    question: "How do you feel about being here today?",
+    options: [
+      { text: "Content — I'm happy to be here", mood: "Calm" },
+      { text: "Motivated — I came here to learn", mood: "Composed" },
+      { text: "Laid back — open to whatever happens", mood: "Relaxed" },
+      { text: "Worried — I hope I can keep up", mood: "Frightened" },
+      { text: "Low energy — I wish I could be resting", mood: "Tired" },
+    ],
+  },
+  {
+    question: "What would help you most right now?",
+    options: [
+      { text: "Nothing — I'm in a good place already", mood: "Calm" },
+      { text: "A clear goal to work towards", mood: "Composed" },
+      { text: "Some music or a comfortable space", mood: "Relaxed" },
+      { text: "Reassurance that it's okay to make mistakes", mood: "Frightened" },
+      { text: "A short break or something energizing", mood: "Tired" },
+    ],
+  },
+];
+
+// Mood profiles with colors and recommendations
+export const moodProfiles = {
+  Calm: {
+    emoji: "😌",
+    color: "#34A853",
+    label: "Calm & Centered",
+    description: "You are in a peaceful, balanced state. Your mind is clear and your body is relaxed. This is an excellent state for learning — you can absorb information well and think clearly.",
+    forFacilitator: "This student is ready to learn. They can handle complex tasks and deep thinking. Great time for challenging content.",
+  },
+  Composed: {
+    emoji: "💪",
+    color: "#1E5EFF",
+    label: "Composed & Focused",
+    description: "You are alert, organized, and ready to take on challenges. Your mind is sharp and you feel in control. This is a peak learning state — you're prepared to tackle anything.",
+    forFacilitator: "This student is highly engaged and ready for active learning. Give them leadership roles, challenges, or problem-solving tasks.",
+  },
+  Relaxed: {
+    emoji: "😊",
+    color: "#6A3DE8",
+    label: "Relaxed & Easy-going",
+    description: "You feel comfortable and at ease. There's no pressure or tension. You're open to learning but in a laid-back way. Good for absorbing information, though high-pressure tasks might feel unwelcome.",
+    forFacilitator: "This student is comfortable but may need gentle engagement. Use interactive activities to raise energy slightly without adding pressure.",
+  },
+  Frightened: {
+    emoji: "😰",
+    color: "#FF6B00",
+    label: "Anxious & On Edge",
+    description: "You're feeling some nervousness or worry right now. Your body might be tense and your thoughts may be racing. It's harder to learn in this state because your brain is in 'alert mode' rather than 'learning mode'.",
+    forFacilitator: "This student needs safety and reassurance. Start with easy wins, create a no-judgment environment, use ice-breakers, and explicitly say it's okay to make mistakes.",
+  },
+  Tired: {
+    emoji: "😴",
+    color: "#E53935",
+    label: "Tired & Low Energy",
+    description: "Your energy is low and your mind feels foggy. You might be physically or mentally exhausted. Learning is difficult when you're running on empty — your brain needs energy to process new information.",
+    forFacilitator: "This student needs energizers. Start with a short physical activity, provide a break, use highly interactive/visual content, and avoid long lectures. Consider shorter learning bursts.",
+  },
+};
