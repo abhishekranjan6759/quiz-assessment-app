@@ -18,7 +18,8 @@ function UserName() {
     'spirit-animal': 'Spirit Animal Personality Quiz',
     'mood-check': 'Mood Check',
     'inner-world': 'Inner World Assessment',
-    'limiting-beliefs': 'Self-Limiting Beliefs Assessment'
+    'limiting-beliefs': 'Self-Limiting Beliefs Assessment',
+    'study-effort': 'Study Effort & Habits Assessment'
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +37,8 @@ function UserName() {
         'spirit-animal': '/quiz/spirit-animal',
         'mood-check': '/quiz/mood-check',
         'inner-world': '/quiz/inner-world',
-        'limiting-beliefs': '/quiz/limiting-beliefs'
+        'limiting-beliefs': '/quiz/limiting-beliefs',
+        'study-effort': '/quiz/study-effort'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }

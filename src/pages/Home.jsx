@@ -145,6 +145,7 @@ function Home() {
     {
       title: "Learning & Growth",
       quizzes: [
+        { path: 'study-effort', label: '📊 Study Effort & Habits', subtitle: 'Your current effort level' },
         { path: 'vark', label: '📚 VARK Learning Style', subtitle: 'How you learn best' },
         { path: 'motivation', label: '🎯 Motivation Type', subtitle: 'Intrinsic vs extrinsic' },
         { path: 'learning-agility', label: '📈 Learning Agility', subtitle: 'Your adaptability' },

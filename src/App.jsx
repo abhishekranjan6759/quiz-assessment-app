@@ -26,6 +26,8 @@ import InnerWorldQuiz from './pages/InnerWorldQuiz';
 import InnerWorldResults from './pages/InnerWorldResults';
 import LimitingBeliefsQuiz from './pages/LimitingBeliefsQuiz';
 import LimitingBeliefsResults from './pages/LimitingBeliefsResults';
+import StudyEffortQuiz from './pages/StudyEffortQuiz';
+import StudyEffortResults from './pages/StudyEffortResults';
 import About from './pages/About';
 import './App.css';
 
@@ -59,6 +61,8 @@ function App() {
         <Route path="/results/inner-world" element={<InnerWorldResults />} />
         <Route path="/quiz/limiting-beliefs" element={<LimitingBeliefsQuiz />} />
         <Route path="/results/limiting-beliefs" element={<LimitingBeliefsResults />} />
+        <Route path="/quiz/study-effort" element={<StudyEffortQuiz />} />
+        <Route path="/results/study-effort" element={<StudyEffortResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
