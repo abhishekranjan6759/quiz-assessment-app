@@ -30,6 +30,8 @@ import StudyEffortQuiz from './pages/StudyEffortQuiz';
 import StudyEffortResults from './pages/StudyEffortResults';
 import StudyStrategyQuiz from './pages/StudyStrategyQuiz';
 import StudyStrategyResults from './pages/StudyStrategyResults';
+import FOMOQuiz from './pages/FOMOQuiz';
+import FOMOResults from './pages/FOMOResults';
 import About from './pages/About';
 import './App.css';
 
@@ -67,6 +69,8 @@ function App() {
         <Route path="/results/study-effort" element={<StudyEffortResults />} />
         <Route path="/quiz/study-strategy" element={<StudyStrategyQuiz />} />
         <Route path="/results/study-strategy" element={<StudyStrategyResults />} />
+        <Route path="/quiz/fomo" element={<FOMOQuiz />} />
+        <Route path="/results/fomo" element={<FOMOResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

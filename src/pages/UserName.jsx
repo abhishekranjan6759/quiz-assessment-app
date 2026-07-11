@@ -20,7 +20,8 @@ function UserName() {
     'inner-world': 'Inner World Assessment',
     'limiting-beliefs': 'Self-Limiting Beliefs Assessment',
     'study-effort': 'Study Effort & Habits Assessment',
-    'study-strategy': 'Personalized Study Strategy'
+    'study-strategy': 'Personalized Study Strategy',
+    'fomo': 'FOMO (Fear of Missing Out) Assessment'
   };
 
   const handleSubmit = (e) => {
@@ -40,7 +41,8 @@ function UserName() {
         'inner-world': '/quiz/inner-world',
         'limiting-beliefs': '/quiz/limiting-beliefs',
         'study-effort': '/quiz/study-effort',
-        'study-strategy': '/quiz/study-strategy'
+        'study-strategy': '/quiz/study-strategy',
+        'fomo': '/quiz/fomo'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }
