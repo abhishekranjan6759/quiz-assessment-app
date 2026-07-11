@@ -23,3 +23,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+###command
+npx gh-pages -d dist -e . -t --no-history
+
+###
+git add src/ ; git commit -m "Add 100 quotes/brain facts carousel with progress bar, redesign home layout"; git push origin main
