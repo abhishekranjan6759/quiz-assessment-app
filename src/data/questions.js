@@ -1610,3 +1610,301 @@ export const studyEffortDomains = {
     high: "You have strong planning skills and self-awareness. You know your effort level and continuously work to improve. This mindset is your biggest asset.",
   },
 };
+
+
+// Study Strategy Quiz - Personalized study recommendations
+export const studyStrategyQuestions = [
+  {
+    id: 1,
+    question: "What type of subject do you primarily need help studying?",
+    options: [
+      { text: "Coding / Programming", tag: "coding" },
+      { text: "Mathematics / Physics / Problem-solving", tag: "math" },
+      { text: "History / Political Science / Factual subjects", tag: "history" },
+      { text: "Biology / Chemistry / Science concepts", tag: "science" },
+      { text: "Languages / Literature / Communication", tag: "language" },
+      { text: "Commerce / Economics / Business", tag: "commerce" },
+    ],
+  },
+  {
+    id: 2,
+    question: "What is your biggest struggle with this subject?",
+    options: [
+      { text: "I understand in class but forget later", tag: "retention" },
+      { text: "I don't understand the concepts at all", tag: "understanding" },
+      { text: "I understand but can't apply in exams/problems", tag: "application" },
+      { text: "There's too much to remember", tag: "volume" },
+      { text: "I get confused between similar concepts", tag: "confusion" },
+    ],
+  },
+  {
+    id: 3,
+    question: "How do you currently study this subject?",
+    options: [
+      { text: "Just reading the textbook or notes", tag: "passive" },
+      { text: "Watching video lectures", tag: "video" },
+      { text: "Solving practice problems", tag: "practice" },
+      { text: "Making notes and summarizing", tag: "notes" },
+      { text: "Group study or discussing with friends", tag: "social" },
+    ],
+  },
+  {
+    id: 4,
+    question: "When you learn something new, how quickly do you forget it?",
+    options: [
+      { text: "Within hours — gone by evening", tag: "fast_forget" },
+      { text: "Within 2-3 days", tag: "medium_forget" },
+      { text: "Within a week", tag: "slow_forget" },
+      { text: "I remember for a while but forget before exams", tag: "exam_forget" },
+      { text: "I usually retain well if I studied properly", tag: "good_retain" },
+    ],
+  },
+  {
+    id: 5,
+    question: "Which of these feels most natural to you?",
+    options: [
+      { text: "Seeing pictures, diagrams, or videos", tag: "visual" },
+      { text: "Listening to explanations or discussions", tag: "auditory" },
+      { text: "Writing things down or making lists", tag: "writing" },
+      { text: "Doing hands-on practice or experiments", tag: "kinesthetic" },
+      { text: "Creating stories or associations in my head", tag: "creative" },
+    ],
+  },
+  {
+    id: 6,
+    question: "How much time can you realistically dedicate to this subject daily?",
+    options: [
+      { text: "Less than 30 minutes", tag: "time_low" },
+      { text: "30 minutes to 1 hour", tag: "time_medium" },
+      { text: "1 to 2 hours", tag: "time_good" },
+      { text: "2 to 3 hours", tag: "time_high" },
+      { text: "More than 3 hours", tag: "time_max" },
+    ],
+  },
+  {
+    id: 7,
+    question: "How far away is your next exam for this subject?",
+    options: [
+      { text: "Less than 1 week", tag: "exam_urgent" },
+      { text: "1-2 weeks", tag: "exam_soon" },
+      { text: "1 month", tag: "exam_month" },
+      { text: "2-3 months", tag: "exam_far" },
+      { text: "No specific exam — I want to learn deeply", tag: "no_exam" },
+    ],
+  },
+  {
+    id: 8,
+    question: "Do you revise what you've studied?",
+    options: [
+      { text: "Never — I study once and move on", tag: "no_revise" },
+      { text: "Only before exams", tag: "exam_revise" },
+      { text: "Occasionally", tag: "some_revise" },
+      { text: "Regularly (weekly)", tag: "regular_revise" },
+      { text: "Systematically using spaced repetition", tag: "spaced_revise" },
+    ],
+  },
+  {
+    id: 9,
+    question: "When you practice problems, how do you feel?",
+    options: [
+      { text: "I don't practice — I only read theory", tag: "no_practice" },
+      { text: "I try but give up quickly when stuck", tag: "give_up" },
+      { text: "I can solve easy ones but struggle with medium/hard", tag: "partial_practice" },
+      { text: "I solve many problems but make careless errors", tag: "careless" },
+      { text: "I solve confidently and analyze my mistakes", tag: "strong_practice" },
+    ],
+  },
+  {
+    id: 10,
+    question: "How do you feel about this subject overall?",
+    options: [
+      { text: "I hate it — I study it because I have to", tag: "dislike" },
+      { text: "I find it boring but manageable", tag: "neutral" },
+      { text: "It's okay — some parts are interesting", tag: "partial_interest" },
+      { text: "I like it but find it challenging", tag: "like_hard" },
+      { text: "I love it and want to master it", tag: "love" },
+    ],
+  },
+];
+
+// Subject-specific study strategies
+export const studyStrategies = {
+  coding: {
+    title: "Coding / Programming",
+    emoji: "💻",
+    steps: [
+      "Understand the concept FIRST — watch a video or read an explanation. Don't jump to code immediately.",
+      "Type the code yourself — NEVER copy-paste. Typing builds muscle memory and forces your brain to process each line.",
+      "Break problems into small parts. Solve sub-problems before combining them.",
+      "After completing a concept, close everything and try to rewrite the code from scratch.",
+      "Build mini-projects that use the concept. Application cements understanding.",
+      "Read other people's code. Understanding different approaches expands your thinking.",
+      "Debug intentionally — break working code and fix it. This builds deep understanding.",
+    ],
+    revision: "Revisit concepts by building slightly different projects every 3-5 days. Code is remembered through hands, not eyes.",
+    visualization: "Trace through code mentally or on paper. Draw flow diagrams of how data moves through your program.",
+    practice: "Solve 2-3 problems daily on platforms like LeetCode, HackerRank, or CodeChef. Start easy, progress weekly.",
+  },
+  math: {
+    title: "Mathematics / Physics",
+    emoji: "📐",
+    steps: [
+      "Understand WHY a formula works before memorizing it. Derivation > Memorization.",
+      "Solve step-by-step. Write every single step — don't skip 'obvious' steps.",
+      "After solving a problem, close the solution and redo it completely from memory.",
+      "Create a formula sheet with derivations and conditions (when to use each formula).",
+      "Practice variety: same concept, different problem types. Don't repeat the same question.",
+      "Time yourself. Exam math requires speed — build it through timed practice.",
+      "Maintain an error log. Write every mistake and WHY you made it.",
+    ],
+    revision: "Revise formulas daily (5 min flashcard session). Solve 5 mixed problems from older topics every day.",
+    visualization: "Draw geometric interpretations. Visualize graphs. Use real-world examples (speed, area, growth).",
+    practice: "50% new problems + 30% revision problems + 20% exam-style timed problems. Every single day.",
+  },
+  history: {
+    title: "History / Political Science",
+    emoji: "📜",
+    steps: [
+      "Create a mental MOVIE of events. Visualize scenes, people, places, and emotions — not just dates.",
+      "Build timelines. Connect events with cause-and-effect chains (this happened BECAUSE of that).",
+      "Use the story method: turn facts into a narrative with characters and drama.",
+      "Group related events by theme (economy, war, social change) not just chronology.",
+      "Draw mind maps connecting people, events, and consequences visually.",
+      "Teach it as a story to someone — if you can narrate it, you know it.",
+      "Link dates to things you already know (born same year as..., happened right after...).",
+    ],
+    revision: "Narrate the story aloud every 3 days. Re-draw your timeline from memory weekly.",
+    visualization: "Imagine you ARE there. What do you see? What are people wearing? What's the mood? Make it vivid.",
+    practice: "Write short answers from memory. Practice framing the same event from different perspectives.",
+  },
+  science: {
+    title: "Biology / Chemistry / Science",
+    emoji: "🔬",
+    steps: [
+      "Understand the process/mechanism first — WHY does this reaction happen? HOW does this system work?",
+      "Draw diagrams from memory. Label everything. If you can draw it, you know it.",
+      "Use analogies — compare complex processes to everyday things (cell = factory, enzymes = scissors).",
+      "Create comparison tables for similar concepts (mitosis vs meiosis, acids vs bases).",
+      "Color-code your notes by category (structures = blue, processes = green, examples = orange).",
+      "For reactions/formulas: practice writing them without looking, then verify.",
+      "Connect topics to real life. Biology in your body. Chemistry in cooking. Physics in sports.",
+    ],
+    revision: "Redraw all diagrams from memory every 4-5 days. Use flashcards for terminology.",
+    visualization: "Zoom in mentally: imagine you're INSIDE the cell, or watching the reaction happen at molecular level.",
+    practice: "Label blank diagrams. Write reactions from memory. Solve numerical problems without referring to examples.",
+  },
+  language: {
+    title: "Languages / Literature",
+    emoji: "📝",
+    steps: [
+      "Read actively — highlight, annotate, question. Don't just let words pass through your eyes.",
+      "Write daily — even 100 words. Writing in the language builds fluency faster than reading alone.",
+      "For literature: understand the CONTEXT (author's life, era, social issues) to unlock meaning.",
+      "Learn vocabulary in context, not isolation. Use new words in sentences immediately.",
+      "Read aloud. Hearing the rhythm and flow of language improves both comprehension and memory.",
+      "Summarize passages in your own words after reading. If you can't summarize, re-read.",
+      "For grammar: practice through error correction exercises, not just rule memorization.",
+    ],
+    revision: "Re-read key passages weekly. Maintain a vocabulary journal and review 10 words daily.",
+    visualization: "Create mental scenes from texts. Visualize characters, settings, and emotions vividly.",
+    practice: "Write essay outlines daily. Practice expressing the same idea in 3 different ways.",
+  },
+  commerce: {
+    title: "Commerce / Economics / Business",
+    emoji: "📊",
+    steps: [
+      "Connect every concept to a real-world example. (Supply-demand = your local vegetable market)",
+      "Create flow charts for processes (accounting cycle, business formation, economic models).",
+      "For numerical topics: practice, practice, practice. Accuracy comes from repetition.",
+      "Use case studies — real companies, real events. Abstract theory becomes concrete through examples.",
+      "Build comparison tables: different account types, economic systems, business structures.",
+      "For definitions/theory: write them in your own words. Textbook language is harder to remember.",
+      "Connect the dots between subjects (economics affects accounting affects business decisions).",
+    ],
+    revision: "Practice journal entries and calculations every 2-3 days. Revise theory through self-quizzing.",
+    visualization: "Imagine running your own business. How would these concepts apply? Make it personal.",
+    practice: "Solve previous year problems. Create T-accounts from memory. Explain concepts without notes.",
+  },
+};
+
+// Personalized recommendation generator
+export const generateStudyPlan = (answers) => {
+  const subject = answers[0]; // coding/math/history/science/language/commerce
+  const struggle = answers[1]; // retention/understanding/application/volume/confusion
+  const currentMethod = answers[2];
+  const forgetSpeed = answers[3];
+  const learningStyle = answers[4];
+  const dailyTime = answers[5];
+  const examDistance = answers[6];
+  const revisionHabit = answers[7];
+  const practiceLevel = answers[8];
+  const feeling = answers[9];
+
+  const strategy = studyStrategies[subject];
+
+  // Build revision frequency recommendation
+  let revisionFrequency = "";
+  if (forgetSpeed === "fast_forget") {
+    revisionFrequency = "You forget quickly — revise within the SAME DAY (evening review of morning study). Then again after 1 day, 3 days, 7 days, and 21 days.";
+  } else if (forgetSpeed === "medium_forget") {
+    revisionFrequency = "Revise after 1 day, then after 3 days, then weekly. The 1-3-7-21 spacing works well for your forgetting rate.";
+  } else if (forgetSpeed === "slow_forget") {
+    revisionFrequency = "You retain reasonably well. Revise after 3 days, then weekly, then monthly. Focus revision time on practice rather than re-reading.";
+  } else if (forgetSpeed === "exam_forget") {
+    revisionFrequency = "You're losing knowledge over time because of insufficient long-term revision. Add a 15-min weekly review of ALL past topics, not just recent ones.";
+  } else {
+    revisionFrequency = "Your retention is strong. Maintain it with monthly quick reviews and focus your energy on deeper application and harder problems.";
+  }
+
+  // Build practice recommendation
+  let practiceAdvice = "";
+  if (practiceLevel === "no_practice") {
+    practiceAdvice = "Critical gap: You MUST add active practice. Knowledge without application is like learning swimming from a book. Start with 20 min of practice daily.";
+  } else if (practiceLevel === "give_up") {
+    practiceAdvice = "When stuck, spend 5 more minutes trying before checking the answer. Then study the solution, close it, and redo it. Struggle is where learning happens.";
+  } else if (practiceLevel === "partial_practice") {
+    practiceAdvice = "Good foundation! Now push into harder problems. Spend 60% time on medium difficulty, 30% on hard, 10% on easy (for confidence).";
+  } else if (practiceLevel === "careless") {
+    practiceAdvice = "Your knowledge is there but execution needs refinement. Slow down, write neatly, double-check key steps. Keep an error log of careless mistakes.";
+  } else {
+    practiceAdvice = "Excellent practice habits! Challenge yourself with competition-level or cross-topic problems to reach mastery.";
+  }
+
+  // Build visualization/encoding recommendation based on learning style
+  let encodingAdvice = "";
+  if (learningStyle === "visual") {
+    encodingAdvice = "Use diagrams, color-coding, mind maps, and videos heavily. Draw concepts from memory. Convert text into visual formats.";
+  } else if (learningStyle === "auditory") {
+    encodingAdvice = "Record yourself explaining concepts and listen back. Discuss with study partners. Use podcasts and verbal self-quizzing.";
+  } else if (learningStyle === "writing") {
+    encodingAdvice = "Write detailed notes in your own words. Summarize chapters into 1-page sheets. Rewrite key points from memory.";
+  } else if (learningStyle === "kinesthetic") {
+    encodingAdvice = "Practice physically: type code, solve on paper, do experiments, walk while revising. Your body needs to be involved.";
+  } else {
+    encodingAdvice = "Create stories, analogies, and wild associations. Link new concepts to things you already know through creative connections.";
+  }
+
+  // Time allocation
+  let timeAdvice = "";
+  if (dailyTime === "time_low") {
+    timeAdvice = "With limited time, use ONLY active recall and practice. Skip re-reading entirely. 25 min focused practice > 2 hours of passive reading.";
+  } else if (dailyTime === "time_medium") {
+    timeAdvice = "Split: 20 min learning new material + 20 min practice + 10 min revision of older topics. Every single day.";
+  } else if (dailyTime === "time_good") {
+    timeAdvice = "Split: 40 min new material + 40 min active practice + 20 min spaced revision. Include 5-min breaks every 25 min.";
+  } else {
+    timeAdvice = "You have good time. Use Pomodoro (25 min work + 5 min break). Alternate: concept study → practice → revision → concept study.";
+  }
+
+  return {
+    strategy,
+    revisionFrequency,
+    practiceAdvice,
+    encodingAdvice,
+    timeAdvice,
+    struggle,
+    examDistance,
+    feeling,
+    revisionHabit,
+  };
+};

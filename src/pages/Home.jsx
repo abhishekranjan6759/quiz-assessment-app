@@ -145,6 +145,7 @@ function Home() {
     {
       title: "Learning & Growth",
       quizzes: [
+        { path: 'study-strategy', label: '🗺️ Study Strategy', subtitle: 'Personalized study plan for your subject' },
         { path: 'study-effort', label: '📊 Study Effort & Habits', subtitle: 'Your current effort level' },
         { path: 'vark', label: '📚 VARK Learning Style', subtitle: 'How you learn best' },
         { path: 'motivation', label: '🎯 Motivation Type', subtitle: 'Intrinsic vs extrinsic' },

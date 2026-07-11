@@ -19,7 +19,8 @@ function UserName() {
     'mood-check': 'Mood Check',
     'inner-world': 'Inner World Assessment',
     'limiting-beliefs': 'Self-Limiting Beliefs Assessment',
-    'study-effort': 'Study Effort & Habits Assessment'
+    'study-effort': 'Study Effort & Habits Assessment',
+    'study-strategy': 'Personalized Study Strategy'
   };
 
   const handleSubmit = (e) => {
@@ -38,7 +39,8 @@ function UserName() {
         'mood-check': '/quiz/mood-check',
         'inner-world': '/quiz/inner-world',
         'limiting-beliefs': '/quiz/limiting-beliefs',
-        'study-effort': '/quiz/study-effort'
+        'study-effort': '/quiz/study-effort',
+        'study-strategy': '/quiz/study-strategy'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }
