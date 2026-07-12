@@ -1985,3 +1985,67 @@ export const fomoLevels = {
     ],
   },
 };
+
+
+// Self-Image Quiz - How you see yourself
+// Based on Rosenberg Self-Esteem Scale framework + self-concept research
+// Likert: Strongly Disagree (1), Disagree (2), Neutral (3), Agree (4), Strongly Agree (5)
+// Positive items scored as-is, Negative items reverse-scored (marked with reverse: true)
+export const selfImageQuestions = [
+  // Self-Worth (Q1-5)
+  { question: "I feel that I am a person of worth, at least on an equal plane with others", domain: "Self-Worth", reverse: false },
+  { question: "On the whole, I am satisfied with myself", domain: "Self-Worth", reverse: false },
+  { question: "I feel I do not have much to be proud of", domain: "Self-Worth", reverse: true },
+  { question: "I certainly feel useless at times", domain: "Self-Worth", reverse: true },
+  { question: "I take a positive attitude toward myself", domain: "Self-Worth", reverse: false },
+  // Body & Appearance (Q6-10)
+  { question: "I feel comfortable and confident with how I look", domain: "Body Image", reverse: false },
+  { question: "I often wish I looked different or compare my appearance to others", domain: "Body Image", reverse: true },
+  { question: "My appearance does not stop me from doing things I want to do", domain: "Body Image", reverse: false },
+  { question: "I feel self-conscious about my body in social situations", domain: "Body Image", reverse: true },
+  { question: "I appreciate my body for what it can do, not just how it looks", domain: "Body Image", reverse: false },
+  // Social Self-Image (Q11-15)
+  { question: "I feel confident expressing my opinions in a group", domain: "Social Image", reverse: false },
+  { question: "I worry a lot about what other people think of me", domain: "Social Image", reverse: true },
+  { question: "I feel I am accepted and valued by the people around me", domain: "Social Image", reverse: false },
+  { question: "I often feel like I don't fit in or belong", domain: "Social Image", reverse: true },
+  { question: "I can be myself around others without pretending to be someone I'm not", domain: "Social Image", reverse: false },
+  // Competence & Ability (Q16-20)
+  { question: "I am able to do things as well as most other people", domain: "Competence", reverse: false },
+  { question: "I feel I am not good enough compared to my peers", domain: "Competence", reverse: true },
+  { question: "I feel confident in my ability to handle challenges", domain: "Competence", reverse: false },
+  { question: "I often think I am a failure or not smart enough", domain: "Competence", reverse: true },
+  { question: "I believe I have valuable skills and qualities to offer", domain: "Competence", reverse: false },
+];
+
+// Self-Image domain info
+export const selfImageDomains = {
+  "Self-Worth": {
+    emoji: "💎",
+    color: "#6A3DE8",
+    low: "You struggle to see your own value. Your inner narrative is harsh and dismissive of your worth. Remember: your value as a person is not determined by achievements, appearance, or others' opinions.",
+    moderate: "You have a mixed sense of self-worth — sometimes you feel good about yourself, other times you doubt your value. Building self-compassion daily can strengthen this foundation.",
+    high: "You have a strong sense of inherent worth. You know you matter regardless of external circumstances. This is a powerful foundation for growth.",
+  },
+  "Body Image": {
+    emoji: "🪞",
+    color: "#E53935",
+    low: "Your relationship with your body and appearance is causing distress. Social media and comparison culture make this worse. Focus on what your body CAN DO rather than how it looks.",
+    moderate: "You have some insecurities about appearance but they don't fully control you. Practice gratitude for your body's abilities rather than judging its appearance.",
+    high: "You have a healthy relationship with your body. You appreciate it without obsessing over appearance. This frees mental energy for growth and learning.",
+  },
+  "Social Image": {
+    emoji: "👥",
+    color: "#1E5EFF",
+    low: "You feel anxious about how others see you and often mask your true self. Authentic connection starts with accepting yourself — the right people will accept you too.",
+    moderate: "You sometimes worry about others' perceptions but can be yourself in safe spaces. Gradually expanding where you feel safe to be authentic will strengthen your social confidence.",
+    high: "You feel socially confident and authentic. You can express yourself without excessive worry about judgment. This openness attracts genuine connections.",
+  },
+  "Competence": {
+    emoji: "💪",
+    color: "#34A853",
+    low: "You deeply doubt your abilities and often feel like a failure. This is imposter syndrome — it's a feeling, not a fact. Track your wins (even small ones) daily to rebuild evidence of your competence.",
+    moderate: "You acknowledge some strengths but still doubt yourself in many areas. Focus on progress over perfection — compare yourself to your past self, not to others.",
+    high: "You have healthy confidence in your abilities. You believe in your capacity to learn and grow. This self-trust propels you forward.",
+  },
+};

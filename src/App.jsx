@@ -34,6 +34,8 @@ import FOMOQuiz from './pages/FOMOQuiz';
 import FOMOResults from './pages/FOMOResults';
 import SpeedReading from './pages/SpeedReading';
 import FocusGrid from './pages/FocusGrid';
+import SelfImageQuiz from './pages/SelfImageQuiz';
+import SelfImageResults from './pages/SelfImageResults';
 import About from './pages/About';
 import './App.css';
 
@@ -75,6 +77,8 @@ function App() {
         <Route path="/results/fomo" element={<FOMOResults />} />
         <Route path="/speed-reading" element={<SpeedReading />} />
         <Route path="/focus-grid" element={<FocusGrid />} />
+        <Route path="/quiz/self-image" element={<SelfImageQuiz />} />
+        <Route path="/results/self-image" element={<SelfImageResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

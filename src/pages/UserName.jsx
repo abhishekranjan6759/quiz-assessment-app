@@ -21,7 +21,8 @@ function UserName() {
     'limiting-beliefs': 'Self-Limiting Beliefs Assessment',
     'study-effort': 'Study Effort & Habits Assessment',
     'study-strategy': 'Personalized Study Strategy',
-    'fomo': 'FOMO (Fear of Missing Out) Assessment'
+    'fomo': 'FOMO (Fear of Missing Out) Assessment',
+    'self-image': 'Self-Image Assessment'
   };
 
   const handleSubmit = (e) => {
@@ -42,7 +43,8 @@ function UserName() {
         'limiting-beliefs': '/quiz/limiting-beliefs',
         'study-effort': '/quiz/study-effort',
         'study-strategy': '/quiz/study-strategy',
-        'fomo': '/quiz/fomo'
+        'fomo': '/quiz/fomo',
+        'self-image': '/quiz/self-image'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }
