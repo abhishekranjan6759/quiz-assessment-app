@@ -32,6 +32,7 @@ import StudyStrategyQuiz from './pages/StudyStrategyQuiz';
 import StudyStrategyResults from './pages/StudyStrategyResults';
 import FOMOQuiz from './pages/FOMOQuiz';
 import FOMOResults from './pages/FOMOResults';
+import SpeedReading from './pages/SpeedReading';
 import About from './pages/About';
 import './App.css';
 
@@ -71,6 +72,7 @@ function App() {
         <Route path="/results/study-strategy" element={<StudyStrategyResults />} />
         <Route path="/quiz/fomo" element={<FOMOQuiz />} />
         <Route path="/results/fomo" element={<FOMOResults />} />
+        <Route path="/speed-reading" element={<SpeedReading />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
