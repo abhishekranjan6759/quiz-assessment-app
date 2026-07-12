@@ -245,6 +245,15 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/focus-grid')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🎯 Focus Grid</span>
+              <span className="quiz-button-subtitle">Peripheral vision & focus training</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>
