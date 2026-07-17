@@ -130,6 +130,7 @@ function Home() {
       title: "Start Here",
       quizzes: [
         { path: 'mood-check', label: '🎭 Mood Check', subtitle: 'How ready are you?' },
+        { path: 'focus', label: '🎯 Focus Check', subtitle: 'How present is your mind?' },
         { path: 'inner-world', label: '🌊 Inner World', subtitle: "What's on your mind?" },
         { path: 'limiting-beliefs', label: '🔓 Self-Limiting Beliefs', subtitle: 'What holds you back?' },
         { path: 'fomo', label: '📱 FOMO Check', subtitle: 'Fear of missing out level' },

@@ -22,7 +22,8 @@ function UserName() {
     'study-effort': 'Study Effort & Habits Assessment',
     'study-strategy': 'Personalized Study Strategy',
     'fomo': 'FOMO (Fear of Missing Out) Assessment',
-    'self-image': 'Self-Image Assessment'
+    'self-image': 'Self-Image Assessment',
+    'focus': 'Focus & Present Moment Check'
   };
 
   const handleSubmit = (e) => {
@@ -44,7 +45,8 @@ function UserName() {
         'study-effort': '/quiz/study-effort',
         'study-strategy': '/quiz/study-strategy',
         'fomo': '/quiz/fomo',
-        'self-image': '/quiz/self-image'
+        'self-image': '/quiz/self-image',
+        'focus': '/quiz/focus'
       };
       navigate(routes[quizType], { state: { userName: name.trim() } });
     }

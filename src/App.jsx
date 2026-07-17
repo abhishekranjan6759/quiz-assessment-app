@@ -36,6 +36,8 @@ import SpeedReading from './pages/SpeedReading';
 import FocusGrid from './pages/FocusGrid';
 import SelfImageQuiz from './pages/SelfImageQuiz';
 import SelfImageResults from './pages/SelfImageResults';
+import FocusQuiz from './pages/FocusQuiz';
+import FocusResults from './pages/FocusResults';
 import About from './pages/About';
 import './App.css';
 
@@ -79,6 +81,8 @@ function App() {
         <Route path="/focus-grid" element={<FocusGrid />} />
         <Route path="/quiz/self-image" element={<SelfImageQuiz />} />
         <Route path="/results/self-image" element={<SelfImageResults />} />
+        <Route path="/quiz/focus" element={<FocusQuiz />} />
+        <Route path="/results/focus" element={<FocusResults />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

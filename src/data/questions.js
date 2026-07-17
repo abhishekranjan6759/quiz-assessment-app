@@ -2049,3 +2049,51 @@ export const selfImageDomains = {
     high: "You have healthy confidence in your abilities. You believe in your capacity to learn and grow. This self-trust propels you forward.",
   },
 };
+
+
+// Focus & Present Moment Quiz - How focused are you RIGHT NOW?
+// Based on Mind-Wandering Questionnaire (MWQ) + Mindful Attention Awareness Scale (MAAS)
+// Lower score = more mind wandering/less focus. Higher = more focused/present
+// Scale: Not at all (1), A little (2), Moderately (3), Quite a bit (4), Completely (5)
+export const focusQuestions = [
+  { question: "Right now, how present do you feel in this moment?", reverse: false },
+  { question: "Right now, my mind keeps drifting to other thoughts unrelated to what I'm doing", reverse: true },
+  { question: "I am aware of what's happening around me right now", reverse: false },
+  { question: "I am thinking about things I need to do later or things that happened earlier", reverse: true },
+  { question: "Right now, I feel mentally clear and sharp", reverse: false },
+  { question: "My thoughts are scattered and jumping between different things", reverse: true },
+  { question: "I feel fully engaged with this task and nothing else is pulling my attention", reverse: false },
+  { question: "I find myself worrying or planning instead of being here", reverse: true },
+  { question: "I can give my full attention to what's in front of me right now", reverse: false },
+  { question: "I feel mentally restless — like my mind wants to be somewhere else", reverse: true },
+  { question: "I notice small details around me (sounds, sensations, visual details)", reverse: false },
+  { question: "I am operating on 'autopilot' without really paying attention", reverse: true },
+  { question: "If someone spoke to me right now, I would hear every word clearly", reverse: false },
+  { question: "Unfinished tasks or personal problems are occupying my mental space", reverse: true },
+  { question: "I feel calm and settled — not rushing or anxious about anything", reverse: false },
+];
+
+// Focus level descriptions
+export const focusLevels = {
+  high: {
+    label: "Fully Focused & Present",
+    emoji: "🎯",
+    color: "#34A853",
+    description: "Your mind is clear, present, and fully available for learning. You're in an ideal state to absorb information, solve problems, and engage deeply. Make the most of this focus!",
+    tip: "You're in the zone. Dive into the hardest material now — your brain is ready for it.",
+  },
+  moderate: {
+    label: "Partially Focused",
+    emoji: "😐",
+    color: "#FF6B00",
+    description: "Your attention is somewhat divided. Part of your mind is here, but part is occupied with other thoughts — perhaps worries, plans, or distractions. You can still learn, but you might need to actively redirect your focus.",
+    tip: "Try this: Take 3 deep breaths, set ONE clear intention for the next 30 minutes, and remove your phone from sight.",
+  },
+  low: {
+    label: "Mind Wandering — Unfocused",
+    emoji: "🌊",
+    color: "#E53935",
+    description: "Your mind is heavily occupied with other thoughts right now. Worries, plans, memories, or distractions are taking up most of your mental bandwidth. Learning in this state is very difficult because your brain can't properly encode new information while processing background thoughts.",
+    tip: "Before studying: Do a 'brain dump' — write everything on your mind on paper for 2 minutes. This externalizes the thoughts so your mind can let go. Then take 5 slow breaths and set a tiny goal.",
+  },
+};
