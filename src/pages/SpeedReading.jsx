@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as pdfjsLib from 'pdfjs-dist';
+import ePub from 'epubjs';
+
+// Set PDF.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 
 const readingTexts = {
   brain: {
@@ -32,11 +37,80 @@ function SpeedReading() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [speed, setSpeed] = useState(150); // words per minute
   const [isComplete, setIsComplete] = useState(false);
+  const [customText, setCustomText] = useState(null); // { label, text } from uploaded file
+  const [isLoading, setIsLoading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
   const intervalRef = useRef(null);
   const containerRef = useRef(null);
+  const fileInputRef = useRef(null);
 
-  const words = readingTexts[selectedText].text.split(/\s+/);
+  const activeText = customText && selectedText === 'custom' ? customText.text : readingTexts[selectedText]?.text || '';
+  const words = activeText.split(/\s+/).filter(w => w.length > 0);
   const totalWords = words.length;
+
+  // File upload handler
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setIsLoading(true);
+    setUploadError('');
+    resetReading();
+
+    try {
+      const fileName = file.name.toLowerCase();
+
+      if (fileName.endsWith('.pdf')) {
+        // Parse PDF
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        let fullText = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          const pageText = content.items.map(item => item.str).join(' ');
+          fullText += pageText + ' ';
+        }
+        const cleanText = fullText.replace(/\s+/g, ' ').trim();
+        if (cleanText.length < 20) throw new Error('Could not extract readable text from this PDF.');
+        setCustomText({ label: file.name, text: cleanText });
+        setSelectedText('custom');
+      } else if (fileName.endsWith('.epub')) {
+        // Parse EPUB
+        const arrayBuffer = await file.arrayBuffer();
+        const book = ePub(arrayBuffer);
+        await book.ready;
+        const spine = book.spine;
+        let fullText = '';
+        for (let i = 0; i < spine.items.length; i++) {
+          const item = spine.items[i];
+          const doc = await book.load(item.href);
+          // doc is a Document, extract text
+          const body = doc.querySelector ? doc.querySelector('body') : doc.body;
+          if (body) {
+            fullText += body.textContent + ' ';
+          }
+        }
+        const cleanText = fullText.replace(/\s+/g, ' ').trim();
+        if (cleanText.length < 20) throw new Error('Could not extract readable text from this EPUB.');
+        setCustomText({ label: file.name, text: cleanText });
+        setSelectedText('custom');
+      } else if (fileName.endsWith('.txt')) {
+        // Plain text
+        const text = await file.text();
+        if (text.trim().length < 20) throw new Error('File is too short or empty.');
+        setCustomText({ label: file.name, text: text.trim() });
+        setSelectedText('custom');
+      } else {
+        throw new Error('Unsupported file format. Please upload PDF, EPUB, or TXT.');
+      }
+    } catch (err) {
+      setUploadError(err.message || 'Failed to read file.');
+      console.error('File upload error:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const startReading = useCallback(() => {
     setIsRunning(true);
@@ -117,19 +191,48 @@ function SpeedReading() {
             <label style={{ fontSize: '12px', color: '#666', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
               Reading Text:
             </label>
-            <select
-              value={selectedText}
-              onChange={(e) => handleTextChange(e.target.value)}
-              style={{
-                width: '100%', padding: '10px 14px', borderRadius: '10px',
-                border: '2px solid #e0e0e0', fontSize: '14px', fontFamily: 'Inter',
-                color: '#333', cursor: 'pointer', appearance: 'auto'
-              }}
-            >
-              {Object.entries(readingTexts).map(([key, val]) => (
-                <option key={key} value={key}>{val.label}</option>
-              ))}
-            </select>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <select
+                value={selectedText}
+                onChange={(e) => handleTextChange(e.target.value)}
+                style={{
+                  flex: 1, minWidth: '180px', padding: '10px 14px', borderRadius: '10px',
+                  border: '2px solid #e0e0e0', fontSize: '14px', fontFamily: 'Inter',
+                  color: '#333', cursor: 'pointer', appearance: 'auto'
+                }}
+              >
+                {Object.entries(readingTexts).map(([key, val]) => (
+                  <option key={key} value={key}>{val.label}</option>
+                ))}
+                {customText && <option value="custom">📄 {customText.label}</option>}
+              </select>
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                disabled={isLoading}
+                style={{
+                  padding: '10px 16px', borderRadius: '10px', border: '2px solid #0B2A5B',
+                  background: 'white', color: '#0B2A5B', fontFamily: 'Montserrat',
+                  fontWeight: 600, fontSize: '12px', cursor: 'pointer', whiteSpace: 'nowrap'
+                }}
+              >
+                {isLoading ? '⏳ Loading...' : '📁 Upload PDF / EPUB / TXT'}
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf,.epub,.txt"
+                onChange={handleFileUpload}
+                style={{ display: 'none' }}
+              />
+            </div>
+            {uploadError && (
+              <p style={{ color: '#E53935', fontSize: '12px', marginTop: '6px' }}>{uploadError}</p>
+            )}
+            {customText && selectedText === 'custom' && (
+              <p style={{ color: '#34A853', fontSize: '11px', marginTop: '4px' }}>
+                ✓ Reading from: {customText.label} ({words.length.toLocaleString()} words)
+              </p>
+            )}
           </div>
 
           {/* Scan Mode */}
