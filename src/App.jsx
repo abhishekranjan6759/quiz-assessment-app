@@ -40,6 +40,7 @@ import FocusQuiz from './pages/FocusQuiz';
 import FocusResults from './pages/FocusResults';
 import TopperMindsetQuiz from './pages/TopperMindsetQuiz';
 import TopperMindsetResults from './pages/TopperMindsetResults';
+import PegSystem from './pages/PegSystem';
 import About from './pages/About';
 import './App.css';
 
@@ -87,6 +88,7 @@ function App() {
         <Route path="/results/focus" element={<FocusResults />} />
         <Route path="/quiz/topper-mindset" element={<TopperMindsetQuiz />} />
         <Route path="/results/topper-mindset" element={<TopperMindsetResults />} />
+        <Route path="/peg-system" element={<PegSystem />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

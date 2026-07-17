@@ -257,6 +257,15 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/peg-system')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🧠 Peg System</span>
+              <span className="quiz-button-subtitle">Memory training with visual pegs</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>
