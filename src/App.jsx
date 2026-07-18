@@ -46,6 +46,7 @@ import BallFocus from './pages/BallFocus';
 import AudioPlayer from './pages/AudioPlayer';
 import NLP from './pages/NLP';
 import MentalMath from './pages/MentalMath';
+import TimerPage from './pages/TimerPage';
 import About from './pages/About';
 import './App.css';
 
@@ -99,6 +100,7 @@ function App() {
         <Route path="/audio" element={<AudioPlayer />} />
         <Route path="/nlp" element={<NLP />} />
         <Route path="/mental-math" element={<MentalMath />} />
+        <Route path="/timer" element={<TimerPage />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

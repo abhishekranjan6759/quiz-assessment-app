@@ -311,6 +311,15 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/timer')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">⏱️ Timer</span>
+              <span className="quiz-button-subtitle">Speed Reading, Pomodoro & custom focus timers</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>
