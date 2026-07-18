@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LEVELS = [
@@ -28,8 +28,25 @@ function PegSystem() {
   // Canvas mode: images fill up a grid on full screen
   const [viewMode, setViewMode] = useState('single'); // 'single' or 'canvas'
   const [canvasRevealedCount, setCanvasRevealedCount] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerRef = useRef(null);
 
   const maxPeg = selectedLevel ? LEVELS.find(l => l.id === selectedLevel)?.pegs : 0;
+
+  // Fullscreen handlers
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
+    } else {
+      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    const handleFsChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', handleFsChange);
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
+  }, []);
 
   const getImageSrc = (pegNumber) => {
     return `${import.meta.env.BASE_URL}Peg system/Peg ${pegNumber}.png`;
@@ -195,11 +212,17 @@ function PegSystem() {
         }
       `}</style>
 
-      <div style={styles.pageContainer}>
+      <div ref={containerRef} style={{
+        ...styles.pageContainer,
+        ...(isFullscreen ? styles.fullscreenContainer : {}),
+      }}>
         {/* Header */}
         <div style={styles.header}>
           <button onClick={() => navigate('/')} style={styles.backButton}>
             ← Home
+          </button>
+          <button onClick={toggleFullscreen} style={styles.fullscreenBtn}>
+            {isFullscreen ? '⊡ Exit' : '⛶ Fullscreen'}
           </button>
           <h1 style={styles.title}>🧠 Peg System</h1>
           <p style={styles.subtitle}>Memory Training with Visual Pegs</p>
@@ -449,6 +472,31 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '30px',
+    background: 'linear-gradient(135deg, #0B2A5B 0%, #1E5EFF 100%)',
+  },
+  fullscreenContainer: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    zIndex: 9999,
+    padding: '20px',
+    overflow: 'auto',
+  },
+  fullscreenBtn: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    background: 'rgba(255,255,255,0.15)',
+    border: 'none',
+    color: 'white',
+    padding: '8px 16px',
+    borderRadius: '20px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: '600',
+    backdropFilter: 'blur(10px)',
   },
   header: {
     textAlign: 'center',
