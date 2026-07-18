@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LEVELS = [
@@ -19,10 +19,15 @@ function shuffleArray(arr) {
 function PegSystem() {
   const navigate = useNavigate();
   const [selectedLevel, setSelectedLevel] = useState(null);
-  const [mode, setMode] = useState('levelSelect'); // levelSelect | start | sequential | random | complete
+  const [mode, setMode] = useState('levelSelect');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [randomOrder, setRandomOrder] = useState([]);
   const [imageError, setImageError] = useState(false);
+  const [flipDirection, setFlipDirection] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
+  // Canvas mode: images fill up a grid on full screen
+  const [viewMode, setViewMode] = useState('single'); // 'single' or 'canvas'
+  const [canvasRevealedCount, setCanvasRevealedCount] = useState(0);
 
   const maxPeg = selectedLevel ? LEVELS.find(l => l.id === selectedLevel)?.pegs : 0;
 
@@ -35,30 +40,54 @@ function PegSystem() {
     setMode('start');
     setCurrentIndex(0);
     setImageError(false);
+    setCanvasRevealedCount(0);
   };
 
   const handleStart = () => {
     setMode('sequential');
     setCurrentIndex(0);
     setImageError(false);
+    setFlipDirection('');
+    setCanvasRevealedCount(viewMode === 'canvas' ? 1 : 0);
+  };
+
+  const animateTransition = (direction, callback) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setFlipDirection(direction);
+    setTimeout(() => {
+      callback();
+      setImageError(false);
+      setFlipDirection('');
+      setIsAnimating(false);
+    }, 500);
   };
 
   const handleNext = () => {
+    if (viewMode === 'canvas') {
+      if (canvasRevealedCount < maxPeg) {
+        setCanvasRevealedCount(prev => prev + 1);
+      }
+      return;
+    }
     if (currentIndex < maxPeg - 1) {
-      setCurrentIndex(prev => prev + 1);
-      setImageError(false);
-    } else if (mode === 'sequential') {
-      // Finished sequential, show random button
-      setMode('randomReady');
-    } else if (mode === 'random') {
-      setMode('complete');
+      animateTransition('flip-next', () => {
+        setCurrentIndex(prev => prev + 1);
+      });
     }
   };
 
   const handlePrev = () => {
+    if (viewMode === 'canvas') {
+      if (canvasRevealedCount > 1) {
+        setCanvasRevealedCount(prev => prev - 1);
+      }
+      return;
+    }
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
-      setImageError(false);
+      animateTransition('flip-prev', () => {
+        setCurrentIndex(prev => prev - 1);
+      });
     }
   };
 
@@ -68,6 +97,8 @@ function PegSystem() {
     setCurrentIndex(0);
     setMode('random');
     setImageError(false);
+    setFlipDirection('');
+    setCanvasRevealedCount(viewMode === 'canvas' ? 1 : 0);
   };
 
   const handleBackToLevels = () => {
@@ -76,6 +107,9 @@ function PegSystem() {
     setCurrentIndex(0);
     setRandomOrder([]);
     setImageError(false);
+    setFlipDirection('');
+    setViewMode('single');
+    setCanvasRevealedCount(0);
   };
 
   const handleRestart = () => {
@@ -83,19 +117,84 @@ function PegSystem() {
     setCurrentIndex(0);
     setRandomOrder([]);
     setImageError(false);
+    setFlipDirection('');
+    setCanvasRevealedCount(0);
   };
 
   const getCurrentPegNumber = () => {
-    if (mode === 'random') {
-      return randomOrder[currentIndex];
-    }
+    if (mode === 'random') return randomOrder[currentIndex];
     return currentIndex + 1;
   };
 
-  const isLastImage = currentIndex >= maxPeg - 1;
+  const getCanvasPegNumber = (idx) => {
+    if (mode === 'random') return randomOrder[idx];
+    return idx + 1;
+  };
 
+  const isLastImage = viewMode === 'canvas'
+    ? canvasRevealedCount >= maxPeg
+    : currentIndex >= maxPeg - 1;
+
+  // Grid config based on level
+  const getGridCols = () => {
+    if (maxPeg <= 10) return 5;  // 2 rows x 5 cols
+    if (maxPeg <= 20) return 5;  // 4 rows x 5 cols
+    return 6;                    // 5 rows x 6 cols
+  };
+
+  // ============ RENDER ============
   return (
     <div className="app-container">
+      <style>{`
+        @keyframes flipNext {
+          0% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+          50% { transform: perspective(1200px) rotateY(-90deg); opacity: 0.3; }
+          100% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+        }
+        @keyframes flipPrev {
+          0% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+          50% { transform: perspective(1200px) rotateY(90deg); opacity: 0.3; }
+          100% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+        }
+        @keyframes popIn {
+          0% { transform: scale(0.3); opacity: 0; }
+          70% { transform: scale(1.05); opacity: 1; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        .flip-next { animation: flipNext 0.5s ease-in-out; }
+        .flip-prev { animation: flipPrev 0.5s ease-in-out; }
+        .peg-image-card { transform-style: preserve-3d; backface-visibility: hidden; }
+        .canvas-item { animation: popIn 0.4s ease-out forwards; }
+        .canvas-grid {
+          display: grid;
+          gap: 10px;
+          padding: 20px;
+          width: 100%;
+          max-width: 1920px;
+          margin: 0 auto;
+        }
+        .canvas-cell {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+        }
+        .canvas-cell img {
+          width: 100%;
+          aspect-ratio: 1/1;
+          object-fit: contain;
+          border-radius: 8px;
+          border: 2px solid #e0e0e0;
+          background: #f8f9fa;
+        }
+        .canvas-cell-label {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #0B2A5B;
+          text-align: center;
+        }
+      `}</style>
+
       <div style={styles.pageContainer}>
         {/* Header */}
         <div style={styles.header}>
@@ -146,8 +245,25 @@ function PegSystem() {
                 Level {selectedLevel} — Peg 1 to Peg {maxPeg}
               </p>
               <p style={styles.startDescription}>
-                Images will appear one by one in sequence. Take your time to memorize each peg association.
+                Click Next to reveal pegs one by one.
               </p>
+
+              {/* View mode toggle */}
+              <div style={styles.viewToggle}>
+                <button
+                  onClick={() => setViewMode('single')}
+                  style={viewMode === 'single' ? styles.toggleActive : styles.toggleInactive}
+                >
+                  🖼️ Single View
+                </button>
+                <button
+                  onClick={() => setViewMode('canvas')}
+                  style={viewMode === 'canvas' ? styles.toggleActive : styles.toggleInactive}
+                >
+                  📋 Full Canvas
+                </button>
+              </div>
+
               <button onClick={handleStart} style={styles.startButton}>
                 Start
               </button>
@@ -158,16 +274,79 @@ function PegSystem() {
           </div>
         )}
 
-        {/* Image Viewer - Sequential & Random */}
-        {(mode === 'sequential' || mode === 'random') && (
+        {/* ============ CANVAS VIEW ============ */}
+        {(mode === 'sequential' || mode === 'random') && viewMode === 'canvas' && (
+          <div style={{ width: '100%', maxWidth: '1920px' }}>
+            {/* Controls bar */}
+            <div style={styles.canvasControls}>
+              <div style={styles.modeBadge}>
+                {mode === 'sequential' ? '📖 Sequential' : '🎲 Random'}
+              </div>
+              <div style={styles.progressText}>
+                {canvasRevealedCount} / {maxPeg}
+              </div>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <button
+                  onClick={handlePrev}
+                  disabled={canvasRevealedCount <= 1}
+                  style={{
+                    ...styles.navButton,
+                    opacity: canvasRevealedCount <= 1 ? 0.4 : 1,
+                    cursor: canvasRevealedCount <= 1 ? 'not-allowed' : 'pointer',
+                  }}
+                >
+                  ← Remove Last
+                </button>
+                {!isLastImage ? (
+                  <button onClick={handleNext} style={styles.navButtonPrimary}>
+                    Next →
+                  </button>
+                ) : (
+                  <button onClick={handleRandom} style={styles.randomButton}>
+                    🎲 Random
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Grid of images */}
+            <div
+              className="canvas-grid"
+              style={{ gridTemplateColumns: `repeat(${getGridCols()}, 1fr)` }}
+            >
+              {Array.from({ length: canvasRevealedCount }, (_, idx) => {
+                const pegNum = getCanvasPegNumber(idx);
+                return (
+                  <div key={`${mode}-${idx}`} className="canvas-cell canvas-item">
+                    <span className="canvas-cell-label">{pegNum}.</span>
+                    <img
+                      src={getImageSrc(pegNum)}
+                      alt={`Peg ${pegNum}`}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+              <button onClick={handleBackToLevels} style={styles.backToLevelsBtn}>
+                ← Back to Levels
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ============ SINGLE VIEW ============ */}
+        {(mode === 'sequential' || mode === 'random') && viewMode === 'single' && (
           <div style={styles.viewerContainer}>
             <div style={styles.viewerCard}>
-              {/* Mode Badge */}
               <div style={styles.modeBadge}>
                 {mode === 'sequential' ? '📖 Sequential' : '🎲 Random'}
               </div>
 
-              {/* Progress */}
               <div style={styles.progressContainer}>
                 <div style={styles.progressText}>
                   {currentIndex + 1} / {maxPeg}
@@ -182,11 +361,12 @@ function PegSystem() {
                 </div>
               </div>
 
-              {/* Peg Label */}
               <h2 style={styles.pegLabel}>Peg {getCurrentPegNumber()}</h2>
 
-              {/* Image */}
-              <div style={styles.imageWrapper}>
+              <div
+                className={`peg-image-card ${flipDirection}`}
+                style={styles.imageWrapper}
+              >
                 {!imageError ? (
                   <img
                     src={getImageSrc(getCurrentPegNumber())}
@@ -202,64 +382,36 @@ function PegSystem() {
                 )}
               </div>
 
-              {/* Navigation Controls */}
               <div style={styles.navControls}>
                 <button
                   onClick={handlePrev}
-                  disabled={currentIndex === 0}
+                  disabled={currentIndex === 0 || isAnimating}
                   style={{
                     ...styles.navButton,
                     opacity: currentIndex === 0 ? 0.4 : 1,
-                    cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
+                    cursor: currentIndex === 0 || isAnimating ? 'not-allowed' : 'pointer',
                   }}
                 >
                   ← Previous
                 </button>
-
                 {!isLastImage ? (
-                  <button onClick={handleNext} style={styles.navButtonPrimary}>
+                  <button
+                    onClick={handleNext}
+                    disabled={isAnimating}
+                    style={{ ...styles.navButtonPrimary, cursor: isAnimating ? 'not-allowed' : 'pointer' }}
+                  >
                     Next →
                   </button>
-                ) : mode === 'sequential' ? (
+                ) : (
                   <button onClick={handleRandom} style={styles.randomButton}>
                     🎲 Random
-                  </button>
-                ) : (
-                  <button onClick={() => setMode('complete')} style={styles.navButtonPrimary}>
-                    Finish ✓
                   </button>
                 )}
               </div>
             </div>
-
             <button onClick={handleBackToLevels} style={styles.backToLevelsBtn}>
               ← Back to Levels
             </button>
-          </div>
-        )}
-
-        {/* Random Ready (after sequential completes) */}
-        {mode === 'randomReady' && (
-          <div style={styles.startContainer}>
-            <div style={styles.startCard}>
-              <span style={styles.startIcon}>🎉</span>
-              <h2 style={styles.startTitle}>Sequential Complete!</h2>
-              <p style={styles.startText}>
-                You've viewed all {maxPeg} pegs in order.
-              </p>
-              <p style={styles.startDescription}>
-                Now test your memory! Click Random to see the pegs in a shuffled order.
-              </p>
-              <button onClick={handleRandom} style={styles.randomButton}>
-                🎲 Random
-              </button>
-              <button onClick={handleRestart} style={styles.secondaryButton}>
-                🔄 Restart Sequential
-              </button>
-              <button onClick={handleBackToLevels} style={styles.secondaryButton}>
-                ← Back to Levels
-              </button>
-            </div>
           </div>
         )}
 
@@ -329,7 +481,6 @@ const styles = {
     color: 'rgba(255,255,255,0.8)',
     fontSize: '1rem',
   },
-  // Level Selection
   levelContainer: {
     width: '100%',
     maxWidth: '700px',
@@ -363,20 +514,14 @@ const styles = {
     boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
     transition: 'all 0.3s ease',
   },
-  levelIcon: {
-    fontSize: '2rem',
-  },
+  levelIcon: { fontSize: '2rem' },
   levelLabel: {
     fontFamily: "'Montserrat', sans-serif",
     fontSize: '1.2rem',
     fontWeight: '700',
     color: '#0B2A5B',
   },
-  levelSubtitle: {
-    fontSize: '0.9rem',
-    color: '#666',
-  },
-  // Start Screen
+  levelSubtitle: { fontSize: '0.9rem', color: '#666' },
   startContainer: {
     width: '100%',
     maxWidth: '500px',
@@ -395,25 +540,15 @@ const styles = {
     gap: '16px',
     width: '100%',
   },
-  startIcon: {
-    fontSize: '3rem',
-  },
+  startIcon: { fontSize: '3rem' },
   startTitle: {
     fontFamily: "'Montserrat', sans-serif",
     fontSize: '1.5rem',
     fontWeight: '700',
     color: '#0B2A5B',
   },
-  startText: {
-    fontSize: '1.1rem',
-    color: '#333',
-    fontWeight: '600',
-  },
-  startDescription: {
-    fontSize: '0.95rem',
-    color: '#666',
-    lineHeight: '1.5',
-  },
+  startText: { fontSize: '1.1rem', color: '#333', fontWeight: '600' },
+  startDescription: { fontSize: '0.95rem', color: '#666', lineHeight: '1.5' },
   startButton: {
     background: 'linear-gradient(135deg, #34A853 0%, #27ae60 100%)',
     color: 'white',
@@ -425,7 +560,6 @@ const styles = {
     cursor: 'pointer',
     marginTop: '10px',
     boxShadow: '0 4px 15px rgba(52, 168, 83, 0.4)',
-    transition: 'transform 0.2s ease',
   },
   secondaryButton: {
     background: 'transparent',
@@ -436,9 +570,46 @@ const styles = {
     fontSize: '0.9rem',
     fontWeight: '600',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
   },
-  // Image Viewer
+  viewToggle: {
+    display: 'flex',
+    gap: '8px',
+    marginTop: '8px',
+  },
+  toggleActive: {
+    background: 'linear-gradient(135deg, #1E5EFF 0%, #0B2A5B 100%)',
+    color: 'white',
+    border: 'none',
+    padding: '10px 18px',
+    borderRadius: '20px',
+    fontSize: '0.85rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+  },
+  toggleInactive: {
+    background: '#f0f0f0',
+    color: '#555',
+    border: 'none',
+    padding: '10px 18px',
+    borderRadius: '20px',
+    fontSize: '0.85rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+  },
+  // Canvas controls
+  canvasControls: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '20px',
+    flexWrap: 'wrap',
+    background: 'rgba(255,255,255,0.95)',
+    borderRadius: '16px',
+    padding: '16px 24px',
+    marginBottom: '16px',
+    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+  },
+  // Single view
   viewerContainer: {
     width: '100%',
     maxWidth: '600px',
@@ -473,11 +644,7 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
   },
-  progressText: {
-    fontSize: '0.95rem',
-    fontWeight: '600',
-    color: '#555',
-  },
+  progressText: { fontSize: '0.95rem', fontWeight: '600', color: '#555' },
   progressBar: {
     width: '100%',
     height: '6px',
@@ -508,6 +675,7 @@ const styles = {
     overflow: 'hidden',
     background: '#f8f9fa',
     border: '3px solid #e9ecef',
+    boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
   },
   pegImage: {
     width: '100%',
@@ -525,15 +693,8 @@ const styles = {
     height: '100%',
     background: '#f0f0f0',
   },
-  placeholderText: {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    color: '#999',
-  },
-  placeholderSub: {
-    fontSize: '0.85rem',
-    color: '#bbb',
-  },
+  placeholderText: { fontSize: '1.5rem', fontWeight: '700', color: '#999' },
+  placeholderSub: { fontSize: '0.85rem', color: '#bbb' },
   navControls: {
     display: 'flex',
     gap: '12px',
@@ -550,7 +711,6 @@ const styles = {
     fontWeight: '600',
     color: '#555',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
   },
   navButtonPrimary: {
     background: 'linear-gradient(135deg, #1E5EFF 0%, #0B2A5B 100%)',
@@ -562,7 +722,6 @@ const styles = {
     color: 'white',
     cursor: 'pointer',
     boxShadow: '0 4px 15px rgba(30, 94, 255, 0.3)',
-    transition: 'all 0.2s ease',
   },
   randomButton: {
     background: 'linear-gradient(135deg, #FF6B00 0%, #FFC107 100%)',
@@ -574,7 +733,6 @@ const styles = {
     color: 'white',
     cursor: 'pointer',
     boxShadow: '0 4px 15px rgba(255, 107, 0, 0.4)',
-    transition: 'all 0.2s ease',
   },
   backToLevelsBtn: {
     background: 'rgba(255,255,255,0.15)',

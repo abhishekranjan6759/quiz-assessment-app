@@ -266,6 +266,51 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/reflects')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🪞 Reflects</span>
+              <span className="quiz-button-subtitle">Turn negative self-talk into positive affirmations</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
+              onClick={() => navigate('/ball-focus')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🎱 Ball Focus Trainer</span>
+              <span className="quiz-button-subtitle">Track bouncing balls to train your attention</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
+              onClick={() => navigate('/audio')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🎧 Reset Your Brain</span>
+              <span className="quiz-button-subtitle">Audio tracks to reset and recharge your mind</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
+              onClick={() => navigate('/nlp')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🫧 NLP: Positive Affirmation</span>
+              <span className="quiz-button-subtitle">Transform your self-image with guided exercises</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
+              onClick={() => navigate('/mental-math')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🧮 Mental Math</span>
+              <span className="quiz-button-subtitle">Train your brain with quick calculations</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>

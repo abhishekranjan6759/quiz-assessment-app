@@ -41,6 +41,11 @@ import FocusResults from './pages/FocusResults';
 import TopperMindsetQuiz from './pages/TopperMindsetQuiz';
 import TopperMindsetResults from './pages/TopperMindsetResults';
 import PegSystem from './pages/PegSystem';
+import Reflects from './pages/Reflects';
+import BallFocus from './pages/BallFocus';
+import AudioPlayer from './pages/AudioPlayer';
+import NLP from './pages/NLP';
+import MentalMath from './pages/MentalMath';
 import About from './pages/About';
 import './App.css';
 
@@ -89,6 +94,11 @@ function App() {
         <Route path="/quiz/topper-mindset" element={<TopperMindsetQuiz />} />
         <Route path="/results/topper-mindset" element={<TopperMindsetResults />} />
         <Route path="/peg-system" element={<PegSystem />} />
+        <Route path="/reflects" element={<Reflects />} />
+        <Route path="/ball-focus" element={<BallFocus />} />
+        <Route path="/audio" element={<AudioPlayer />} />
+        <Route path="/nlp" element={<NLP />} />
+        <Route path="/mental-math" element={<MentalMath />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
