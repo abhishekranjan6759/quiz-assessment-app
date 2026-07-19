@@ -47,6 +47,7 @@ import AudioPlayer from './pages/AudioPlayer';
 import NLP from './pages/NLP';
 import MentalMath from './pages/MentalMath';
 import TimerPage from './pages/TimerPage';
+import EyeExercise from './pages/EyeExercise';
 import About from './pages/About';
 import './App.css';
 
@@ -101,6 +102,7 @@ function App() {
         <Route path="/nlp" element={<NLP />} />
         <Route path="/mental-math" element={<MentalMath />} />
         <Route path="/timer" element={<TimerPage />} />
+        <Route path="/eye-exercise" element={<EyeExercise />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

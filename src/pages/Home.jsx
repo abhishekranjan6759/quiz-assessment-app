@@ -320,6 +320,15 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/eye-exercise')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">👁️ Eye Movement Exercise</span>
+              <span className="quiz-button-subtitle">Train reading eye movement with a tracking ball</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>
