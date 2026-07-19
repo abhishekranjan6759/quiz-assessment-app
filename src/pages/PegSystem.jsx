@@ -29,6 +29,8 @@ function PegSystem() {
   const [viewMode, setViewMode] = useState('single'); // 'single' or 'canvas'
   const [canvasRevealedCount, setCanvasRevealedCount] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [imageSize, setImageSize] = useState(150); // px per image in canvas
+  const [canvasWidth, setCanvasWidth] = useState(1200); // canvas container width
   const containerRef = useRef(null);
 
   const maxPeg = selectedLevel ? LEVELS.find(l => l.id === selectedLevel)?.pegs : 0;
@@ -287,6 +289,34 @@ function PegSystem() {
                 </button>
               </div>
 
+              {/* Canvas size & image size (only for canvas mode) */}
+              {viewMode === 'canvas' && (
+                <div style={styles.canvasSizeSection}>
+                  <div style={styles.sizeRow}>
+                    <span style={styles.sizeLabel}>Canvas Width:</span>
+                    <div style={styles.sizeButtons}>
+                      {[800, 1200, 1920].map(w => (
+                        <button key={w} onClick={() => setCanvasWidth(w)}
+                          style={canvasWidth === w ? styles.toggleActive : styles.toggleInactive}>
+                          {w}px
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={styles.sizeRow}>
+                    <span style={styles.sizeLabel}>Image Size:</span>
+                    <div style={styles.sizeButtons}>
+                      {[80, 120, 150, 200, 250].map(s => (
+                        <button key={s} onClick={() => setImageSize(s)}
+                          style={imageSize === s ? styles.toggleActive : styles.toggleInactive}>
+                          {s}px
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <button onClick={handleStart} style={styles.startButton}>
                 Start
               </button>
@@ -299,7 +329,7 @@ function PegSystem() {
 
         {/* ============ CANVAS VIEW ============ */}
         {(mode === 'sequential' || mode === 'random') && viewMode === 'canvas' && (
-          <div style={{ width: '100%', maxWidth: '1920px' }}>
+          <div style={{ width: '100%', maxWidth: canvasWidth + 'px' }}>
             {/* Controls bar */}
             <div style={styles.canvasControls}>
               <div style={styles.modeBadge}>
@@ -307,6 +337,17 @@ function PegSystem() {
               </div>
               <div style={styles.progressText}>
                 {canvasRevealedCount} / {maxPeg}
+              </div>
+              {/* Size adjusters inline */}
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.8rem', color: '#555', fontWeight: '600' }}>Img:</span>
+                <button onClick={() => setImageSize(s => Math.max(60, s - 20))} style={styles.sizeAdjBtn}>−</button>
+                <span style={{ fontSize: '0.8rem', fontWeight: '700', color: '#0B2A5B' }}>{imageSize}px</span>
+                <button onClick={() => setImageSize(s => Math.min(300, s + 20))} style={styles.sizeAdjBtn}>+</button>
+                <span style={{ fontSize: '0.8rem', color: '#555', fontWeight: '600', marginLeft: '8px' }}>Canvas:</span>
+                <button onClick={() => setCanvasWidth(w => Math.max(600, w - 200))} style={styles.sizeAdjBtn}>−</button>
+                <span style={{ fontSize: '0.8rem', fontWeight: '700', color: '#0B2A5B' }}>{canvasWidth}px</span>
+                <button onClick={() => setCanvasWidth(w => Math.min(1920, w + 200))} style={styles.sizeAdjBtn}>+</button>
               </div>
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <button
@@ -335,16 +376,17 @@ function PegSystem() {
             {/* Grid of images */}
             <div
               className="canvas-grid"
-              style={{ gridTemplateColumns: `repeat(${getGridCols()}, 1fr)` }}
+              style={{ gridTemplateColumns: `repeat(auto-fill, ${imageSize}px)`, justifyContent: 'center' }}
             >
               {Array.from({ length: canvasRevealedCount }, (_, idx) => {
                 const pegNum = getCanvasPegNumber(idx);
                 return (
-                  <div key={`${mode}-${idx}`} className="canvas-cell canvas-item">
+                  <div key={`${mode}-${idx}`} className="canvas-cell canvas-item" style={{ width: imageSize + 'px' }}>
                     <span className="canvas-cell-label">{pegNum}.</span>
                     <img
                       src={getImageSrc(pegNum)}
                       alt={`Peg ${pegNum}`}
+                      style={{ width: imageSize + 'px', height: imageSize + 'px' }}
                       onError={(e) => {
                         e.target.style.display = 'none';
                       }}
@@ -643,6 +685,47 @@ const styles = {
     fontSize: '0.85rem',
     fontWeight: '600',
     cursor: 'pointer',
+  },
+  // Canvas size section on start screen
+  canvasSizeSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    width: '100%',
+    background: '#f8f9fa',
+    borderRadius: '12px',
+    padding: '14px',
+  },
+  sizeRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    flexWrap: 'wrap',
+  },
+  sizeLabel: {
+    fontSize: '0.85rem',
+    fontWeight: '700',
+    color: '#0B2A5B',
+    minWidth: '100px',
+  },
+  sizeButtons: {
+    display: 'flex',
+    gap: '6px',
+    flexWrap: 'wrap',
+  },
+  sizeAdjBtn: {
+    background: '#e9ecef',
+    border: 'none',
+    width: '28px',
+    height: '28px',
+    borderRadius: '50%',
+    fontSize: '1rem',
+    fontWeight: '700',
+    color: '#333',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   // Canvas controls
   canvasControls: {
