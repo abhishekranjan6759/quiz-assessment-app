@@ -329,6 +329,15 @@ function Home() {
 
             <button
               className="quiz-button about-button"
+              onClick={() => navigate('/mandala')}
+              style={{ marginBottom: '12px' }}
+            >
+              <span className="quiz-button-label">🕉️ Mandala Meditation</span>
+              <span className="quiz-button-subtitle">Gaze at a spinning mandala with calming music</span>
+            </button>
+
+            <button
+              className="quiz-button about-button"
               onClick={() => navigate('/about')}
             >
               <span className="quiz-button-label">ℹ️ About These Quizzes</span>

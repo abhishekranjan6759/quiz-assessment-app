@@ -40,6 +40,7 @@ function SpeedReading() {
   const [customText, setCustomText] = useState(null); // { label, text } from uploaded file
   const [isLoading, setIsLoading] = useState(false);
   const [uploadError, setUploadError] = useState('');
+  const [pacerType, setPacerType] = useState('highlight'); // 'highlight' or 'line'
   const intervalRef = useRef(null);
   const containerRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -259,6 +260,39 @@ function SpeedReading() {
             </div>
           </div>
 
+          {/* Pacer Type */}
+          <div style={{ marginBottom: '14px' }}>
+            <label style={{ fontSize: '12px', color: '#666', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
+              Pacer Type:
+            </label>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => { setPacerType('highlight'); resetReading(); }}
+                style={{
+                  padding: '8px 18px', borderRadius: '20px',
+                  border: pacerType === 'highlight' ? '2px solid #0B2A5B' : '2px solid #e0e0e0',
+                  background: pacerType === 'highlight' ? '#0B2A5B' : 'white',
+                  color: pacerType === 'highlight' ? 'white' : '#333',
+                  fontFamily: 'Montserrat', fontWeight: 600, fontSize: '13px', cursor: 'pointer'
+                }}
+              >
+                🟡 Word Highlight
+              </button>
+              <button
+                onClick={() => { setPacerType('line'); resetReading(); }}
+                style={{
+                  padding: '8px 18px', borderRadius: '20px',
+                  border: pacerType === 'line' ? '2px solid #0B2A5B' : '2px solid #e0e0e0',
+                  background: pacerType === 'line' ? '#0B2A5B' : 'white',
+                  color: pacerType === 'line' ? 'white' : '#333',
+                  fontFamily: 'Montserrat', fontWeight: 600, fontSize: '13px', cursor: 'pointer'
+                }}
+              >
+                📏 Line Pacer
+              </button>
+            </div>
+          </div>
+
           {/* Speed Control */}
           <div style={{ marginBottom: '14px' }}>
             <label style={{ fontSize: '12px', color: '#666', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
@@ -384,26 +418,63 @@ function SpeedReading() {
             </div>
           ) : (
             <p style={{ margin: 0 }}>
-              {words.map((word, index) => {
-                const isHighlighted = index >= currentWordIndex && index < currentWordIndex + scanMode;
-                const isPast = index < currentWordIndex;
-                return (
-                  <span
-                    key={index}
-                    className={isHighlighted ? 'word-highlighted' : ''}
-                    style={{
-                      padding: '2px 1px',
-                      borderRadius: '3px',
-                      backgroundColor: isHighlighted ? '#FFC107' : 'transparent',
-                      color: isPast ? '#bbb' : isHighlighted ? '#0B2A5B' : '#333',
-                      fontWeight: isHighlighted ? 700 : 400,
-                      transition: 'background-color 0.05s',
-                    }}
-                  >
-                    {word}{' '}
-                  </span>
-                );
-              })}
+              {pacerType === 'highlight' ? (
+                // Word Highlight mode
+                words.map((word, index) => {
+                  const isHighlighted = index >= currentWordIndex && index < currentWordIndex + scanMode;
+                  const isPast = index < currentWordIndex;
+                  return (
+                    <span
+                      key={index}
+                      className={isHighlighted ? 'word-highlighted' : ''}
+                      style={{
+                        padding: '2px 1px',
+                        borderRadius: '3px',
+                        backgroundColor: isHighlighted ? '#FFC107' : 'transparent',
+                        color: isPast ? '#bbb' : isHighlighted ? '#0B2A5B' : '#333',
+                        fontWeight: isHighlighted ? 700 : 400,
+                        transition: 'background-color 0.05s',
+                      }}
+                    >
+                      {word}{' '}
+                    </span>
+                  );
+                })
+              ) : (
+                // Line Pacer mode
+                words.map((word, index) => {
+                  const isPast = index < currentWordIndex;
+                  const isCurrent = index === currentWordIndex;
+                  return (
+                    <span key={index}>
+                      <span
+                        className={isCurrent ? 'word-highlighted' : ''}
+                        style={{
+                          color: isPast ? '#ccc' : '#333',
+                          fontWeight: 400,
+                          transition: 'color 0.1s',
+                        }}
+                      >
+                        {word}
+                      </span>
+                      {isCurrent && (
+                        <span style={{
+                          display: 'inline-block',
+                          width: '2px',
+                          height: '1.2em',
+                          background: '#E74C3C',
+                          verticalAlign: 'middle',
+                          marginLeft: '1px',
+                          marginRight: '1px',
+                          animation: 'none',
+                          boxShadow: '0 0 4px rgba(231,76,60,0.6)',
+                        }} />
+                      )}
+                      {!isCurrent && ' '}
+                    </span>
+                  );
+                })
+              )}
             </p>
           )}
         </div>
