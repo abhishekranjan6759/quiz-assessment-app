@@ -443,7 +443,7 @@ function SpeedReading() {
               ) : (
                 // Line Pacer mode
                 words.map((word, index) => {
-                  const isPast = index < currentWordIndex;
+                  const isPast = index <= currentWordIndex;
                   const isCurrent = index === currentWordIndex;
                   return (
                     <span key={index}>
